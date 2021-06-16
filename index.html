@@ -2,71 +2,491 @@
 <html lang="ru">
 
 <head>
-  <meta charset="utf-8">
-  <title>FlexyLog</title>
-
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-
-
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-TGT9N6P');
-  </script>
-  <!-- End Google Tag Manager -->
-
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Mihail Pirogovsky - Github page</title>
 </head>
 
-<body id="bodyContainer">
+<body>
+    <!-- Nav -->
+    <ul class="nav nav-tabs" id="navId">
+        <li class="nav-item">
+            <a class="nav-link logo">developman2013</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                aria-expanded="false">Материалы на Habr</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#tab1">Про хакатоны</a>
+                <a class="dropdown-item" href="#tab2">Про разработку расширений Visual Studio</a>
+                <a class="dropdown-item" href="#tab3">Про разработку чат-ботов, используя Azure и Bot Framework</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                aria-expanded="false">Ивенты</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#tab4">Hour of code</a>
+                <a class="dropdown-item" href="#tab5">Студенческий хакатон</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                aria-expanded="false">Проекты и код</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#tab6">ILogger</a>
+                <a class="dropdown-item" href="#tab7">Расширение для Visual Studio</a>
+                <a class="dropdown-item" href="#tab8">Чат-бот под платформу</a>
+                <a class="dropdown-item" href="#tab9">Прочее</a>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a href="#tab10" class="nav-link">Контакты</a>
+        </li>
+    </ul>
 
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TGT9N6P"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+    <!-- Content -->
+    <div class="container">
+        <h1>Материалы</h1>
+        <div id="tab1" class="row content">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="card text-white bg-primary">
+                                <img class="card-img-top" src="img/01.png" alt="скриншот названия статьи">
+                                <div class="card-body">
+                                    <h4 class="card-title">Хакатон и есть решение проблемы</h4>
+                                    <p class="card-text">
+                                        <a target="_blank" href="https://habr.com/ru/post/414755/">
+                                            <button type="button" class="btn btn-light">Почитать материал</button>
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <p>Этот материал был написан под вдохновением хакатонов, в которых довелось не только
+                                поучаствовать, но и организовать.</p>
+                            <p>
+                                Статья написана с нуля. Главной задачей было рассказать, что хакатон -
+                                не только новомодные тусовки бородатых разработчиков с пивными животами и свитерами с
+                                оленями,
+                                но и отличный инструмент для всех участников ивента: организаторов, спонсоров, самих
+                                участников.
+                            </p>
+                            <p>
+                                Были рассмотрены также два сценария хакатона: со стороны участника и со стороны
+                                организатора.
+                            </p>
+                            <p>
+                                <!-- ПОПРАВИТЬ ССЫЛКУ ПОСЛЕ НАПОЛНЕНИЯ КОНТЕНТОМ -->
+                                К слову, отдельно про организацию хакатона с привлечением спонсоров я написал чуть ниже
+                                <a href="#tab5">тут</a>.
+                            </p>
+                            <p>
+                                Приятного чтения
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-  
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PLDZ9DL3RC"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+        <div id="tab2" class="row content">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="card text-white bg-primary">
+                                <img class="card-img-top" src="img/02.png" alt="скриншот меню расширения">
+                                <div class="card-body">
+                                    <h4 class="card-title">Как QA-инженер сэкономил целый день работы, связав автотесты
+                                        в Visual Studio и Test IT</h4>
+                                    <p class="card-text">
+                                        <a target="_blank" href="https://habr.com/ru/company/microsoft/blog/488566/">
+                                            <button type="button" class="btn btn-light">Почитать материал</button>
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <p>
+                                Материал был разработан совместно с командой Test IT.
+                            </p>
+                            <p>
+                                В данном материале я рассказал о том, как разработка расширений для IDE может ускорить
+                                работу сотрудников, в частности - QA-специалистов.
+                                Попутно с материалом мною разрабатывался пример такого расширения для Visual Studio 19.
+                            </p>
+                            <p>
+                                Материал был опубликован на хабре Microsoft, авторство материала указано в конце.
+                            </p>
+                            <p>
+                                Приятного чтения
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    gtag('config', 'G-PLDZ9DL3RC');
-  </script>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
+        <div id="tab3" class="row content">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="card text-white bg-primary">
+                                <img class="card-img-top" src="img/03.png" alt="скриншот меню расширения">
+                                <div class="card-body">
+                                    <h4 class="card-title">Сказ о том, как QA Engineer вебхуками себе жизнь упрощал на
+                                        примере Test IT, и при чём здесь Bot Framework</h4>
+                                    <p class="card-text">
+                                        <a target="_blank" href="https://habr.com/ru/post/481654/">
+                                            <button type="button" class="btn btn-light">Почитать материал</button>
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <p>
+                                Материал был разработан совместно с командой Test IT.
+                            </p>
+                            <p>
+                                В материале речь идёт о проблемах коммуникации внутри команды, а так же о способе
+                                решения таких проблем.
+                            </p>
+                            <p>
+                                Попутно с написанием матерала мною был реализован небольшой чат-бот на основе <i>Bot
+                                    Framework</i>, хостится он и по сей день на Azure.
+                                Собственно, про этапы создания бота подробно расписал в материале.
+                            </p>
+                            <p>
+                                Приятного чтения
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h1>Ивенты</h1>
+        <div id="tab4" class="row content">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="card text-white bg-primary">
+                                <img class="card-img-top" src="img/04.png" alt="логотип акции час кода">
+                                <div class="card-body">
+                                    <h4 class="card-title">Час кода</h4>
+                                    <p class="card-text">
+                                        <button type="button" class="btn btn-light" disabled>Первоисточник новости не
+                                            сохранился</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <p>
+                                В рамках
+                                <a target="_blank"
+                                    href="https://studentpartners.microsoft.com/ru-ru/Account/DisplayMSPCertificate?url=C8C4B43115034F839EA9D5BEEB7461F4">программы
+                                    MSP</a>
+                                и <a target="_blank" href="https://hourofcode.com/ru">акции "Час кода"</a> мы со
+                                студентами провели
+                                для
+                                учеников средней и старшей школы познавательный урок.
+                            </p>
+                            <p>
+                                Мы рассказали про основы алгоритмов на известном примере "Черепашки", а затем приступили
+                                к выполнению задач на сайте акции.
+                            </p>
+                            <p>
+                                Как достижение - все ученики (а это целых 6 классов!) успешно выполнили задания и
+                                получили
+                                сертификаты об успешном прохождении задач акции, а мы получили массу позитивных эмоций
+                            </p>
+                            <p>
+                                К сожалению, ссылка на первоисточник новости не сохранилась.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab5" class="row content">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="card text-white bg-primary">
+                                <img class="card-img-top" src="img/05.png" alt="фото с хакатона">
+                                <div class="card-body">
+                                    <h4 class="card-title">Студенческий хакатон math_hack</h4>
+                                    <p class="card-text">
+                                        <a target="_blank" href="http://www.gsu.by/ru/node/449">
+                                            <button type="button" class="btn btn-light">Читать на
+                                                первоисточнике</button>
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <p>
+                                Также в рамках <a target="_blank"
+                                    href="https://studentpartners.microsoft.com/ru-ru/Account/DisplayMSPCertificate?url=C8C4B43115034F839EA9D5BEEB7461F4">программы
+                                    MSP</a> мы в команде студентов организовали и провели первый для университета
+                                хакатон.
+                            </p>
+                            <p>
+                                Мы привлекли спонсора мероприятия, которым выступила компания "IBA Гомель", продумали
+                                тематику,
+                                подготовили веб-сайт с информацией и регистрацией,
+                                разработали плакаты мероприятия, провели рекламу в других ВУЗах и ССУЗах, разработали
+                                расписание на 2 дня
+                                и собрали в итоге более полусотни участников.
+                            </p>
+                            <p>
+                                В конечном итоге мы получили положительные отзывы о мероприятии от всех принявших
+                                участие, а также большой и интересный опыт.
+                            </p>
+                            <p>
+                                Подробнее о мероприятии со стороны университета можно почитать на первоисточнике.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
-  <!-- The script that is executed when you get to the "Thank you" pages -->
-  <script>
-    function ym_thanks_pages_logger(pageUrl) {
-      console.log("ym_thanks_pages_logger pageUrl: " + pageUrl);
-      try {
-        ym(78298597, 'hit', pageUrl);
-      }catch{}
-    }
-  </script>
+        <h1>Проекты и код</h1>
+        <div id="tab6" class="row content">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="card text-white bg-primary">
+                                <img class="card-img-top" src="img/06.png" alt="скрин платформы ILogger">
+                                <div class="card-body">
+                                    <h4 class="card-title">ILogger</h4>
+                                    <p class="card-text">
+                                        Github: <button type="button" class="btn btn-light" disabled>Репозиторий
+                                            недоступен</button>
+                                    </p>
+                                    <p class="card-text">
+                                        Dev-версия:
+                                        <a target="_blank" href="https://ilogger-dev.somee.com/">
+                                            <button type="button" class="btn btn-light">Посмотреть</button>
+                                        </a>
+                                    </p>
+                                    <p class="card-text">
+                                        MVP-версия:
+                                        <button type="button" class="btn btn-light" disabled>MVP в разработке</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <p>
+                                В команде из 3-х разработчиков мы создаём веб-приложение для
+                                сбора и анализа логов со сторонних сервисов.
+                            </p>
+                            <p>
+                                Платформа являет собой сервер (Angular + ASP.NET Core API + SQL Server) для хранения и
+                                анализа логов,
+                                а также библиотеку, расширяющую возможность стандартного интерфейса ILogger в .NET
+                            </p>
+                            <p>
+                                Исходный код проекта не распространяется.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <div id="tab7" class="row content">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="card text-white bg-primary">
+                                <img class="card-img-top" src="img/07.png" alt="скриншот меню расширения">
+                                <div class="card-body">
+                                    <h4 class="card-title">Расширение для Visual Studio</h4>
+                                    <p class="card-text">
+                                        Github:
+                                        <a target="_blank"
+                                            href="https://github.com/developman2013/Test-IT-VS-Extension-sample">
+                                            <button type="button" class="btn btn-light">Посмотреть репозиторий</button>
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <p>
+                                Проект представляет собой расширение-хэлпер под платформу Test IT.
+                            </p>
+                            <p>
+                                Расширение реализовано с использованием Visual Studio SDK.
+                            </p>
+                            <p>
+                                Расширение, после его настройки, способно отображать логи о результатах прохождения
+                                автотестов в
+                                активном решении, а также собирать информацию об автотестах из сборки проекта и
+                                отправлять
+                                информацию о них на TMS-платформу Test IT.
+                            </p>
+                            <p>
+                                Проект реализован совместно с другими разработчиками. Подробности в репозитории.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-  <!-- JavaScript Bundle with Popper -->
+        <div id="tab8" class="row content">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="card text-white bg-primary">
+                                <img class="card-img-top" src="img/08.png" alt="скриншот меню расширения">
+                                <div class="card-body">
+                                    <h4 class="card-title">Чат-бот под платформу</h4>
+                                    <p class="card-text">
+                                        Github:
+                                        <a target="_blank" href="https://github.com/developman2013/TestIT-bot-sample">
+                                            <button type="button" class="btn btn-light">Посмотреть репозиторий</button>
+                                        </a>
+                                    </p>
+                                    <p class="card-text">
+                                        Telegram bot:
+                                        <a target="_blank" href="https://t.me/testIT_tg_bot">
+                                            <button type="button" class="btn btn-light">Посмотреть бота в TG</button>
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <p>
+                                Проект представляет собой чат-бот под платформу Test IT.
+                            </p>
+                            <p>
+                                Расширение реализовано с использованием Bot Framework на .NET Core.
+                            </p>
+                            <p>
+                                Бот, после запуска и деплоя, способен уведомлять отдельных пользователей
+                                об изменении статуса тест-плана на портале платформы Test IT.
+                            </p>
+                            <p>
+                                Данное веб-приложение содержит API-контроллер для входящих оповещений,
+                                после чего, используя связку секретного ключа, бот отправляет сообщение-уведомление
+                                в ЛС или чаты, где задан данный секретный ключ. На текущий момент бот работает в
+                                Telegram и в Slack.
+                            </p>
+                            <p>
+                                Подробности в репозитории.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
-    integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
-    integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
-    crossorigin="anonymous"></script>
+        <div id="tab9" class="row content">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="card text-white bg-primary">
+                                <img class="card-img-top" src="img/09.png" alt="скриншот фотографии">
+                                <div class="card-body">
+                                    <h4 class="card-title">Прочее</h4>
+                                    <p class="card-text">
+                                        Сайт союза следователей:
+                                        <a target="_blank" href="http://sojuz-sledovateley.by/">
+                                            <button type="button" class="btn btn-light">Посмотреть сайт</button>
+                                        </a>
+                                    </p>
+                                    <p class="card-text">
+                                        Telegram bot:
+                                        <a target="_blank" href="https://t.me/USSRfromMSP_bot">
+                                            <button type="button" class="btn btn-light">Посмотреть бота в TG</button>
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <p>
+                                На ранних этапах самообучения были реализованы несколько несложных, но от этого не менее
+                                интересных проектов:
+                            </p>
+                            <p>
+                                <b>Сайт организации "Союз следователей"</b>.
+                                В рамках проекта был развёрнут хостинг и домен, развёрнут шаблон Joomla, настроена БД и
+                                прочие
+                                необходимые для работы параметры. Это один из немногих проектов на Joomla CMS, который
+                                работает до сих пор.
+                            </p>
+                            <p>
+                                <b>Бот USSRfromMSP в Telegram</b>.
+                                Шуточный бот создан для групповых бесед и позволяет распевать гимн СССР совместно с
+                                участниками беседы.
+                                Бот реализован на <i>Bot Framework</i>, развёрнут на Azure.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <h1>This is a test message from static page!</h1>
+        <h1>Контакты</h1>
+        <div id="tab10" class="row content">
+            <div class="col-lg-12">
+                <div class="card text-white bg-primary">
+                    <img class="card-img-top" src="img/me.jpg" alt="аватар">
+                    <div class="card-body">
+                        <h4 class="card-title">Со мной можно связаться тут:</h4>
+                        <p class="card-text contacts">
+                            <a target="_blank" href="https://t.me/mihailych007">
+                                <button type="button" class="btn btn-light">Telegram</button>
+                            </a>
+                            <a target="_blank" href="https://vk.com/mr__twister">
+                                <button type="button" class="btn btn-light">VK</button>
+                            </a>
+                            <a target="_blank" href="mailto:mihailych007@gmail.com">
+                                <button type="button" class="btn btn-light">Email</button>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
