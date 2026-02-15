@@ -16,6 +16,22 @@
   animation: rise 0.45s ease both;
 }
 
+.hero-intro {
+  display: grid;
+  grid-template-columns: minmax(84px, 110px) minmax(0, 1fr);
+  align-items: center;
+  gap: 1rem;
+}
+
+.hero-avatar {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 20px;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
 .hero-kicker {
   text-transform: uppercase;
   letter-spacing: 0.09em;
@@ -23,6 +39,11 @@
   font-weight: 600;
   color: var(--muted);
   margin: 0;
+}
+
+.hero-text {
+  display: grid;
+  gap: 0.2rem;
 }
 
 .hero h1,
@@ -109,6 +130,18 @@
 .card-stack {
   display: grid;
   gap: 0.85rem;
+}
+
+@media (max-width: 640px) {
+  .hero-intro {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+
+  .hero-avatar {
+    width: 88px;
+    border-radius: 16px;
+  }
 }
 
 @keyframes rise {
