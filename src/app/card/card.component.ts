@@ -1,23 +1,25 @@
-
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 
 @Component({
-    selector: 'app-card',
-    imports: [],
-    templateUrl: './card.component.html',
-    styleUrl: './card.component.css'
+  selector: 'app-card',
+  imports: [],
+  templateUrl: './card.component.html',
+  styleUrl: './card.component.css'
 })
-export class CardComponent implements OnInit {
-  @Input() header: string = "";
-  @Input() description: string = "";
-  @Input() imgUrl: string = "";
-  @Input() extUrl: string = "";
-  @Input() tag: string = "";
+export class CardComponent implements OnChanges {
+  @Input() header: string = '';
+  @Input() description: string = '';
+  @Input() imgUrl: string = '';
+  @Input() extUrl: string = '';
+  @Input() tag: string = '';
+  @Input() ctaLabel: string = 'Open source';
 
-  public descriptionArr: string[] = new Array();
+  public descriptionArr: string[] = [];
 
-  ngOnInit() {
-    this.descriptionArr = this.description.split("\n");
+  ngOnChanges() {
+    this.descriptionArr = this.description
+      .split('\n')
+      .map((paragraph) => paragraph.trim())
+      .filter(Boolean);
   }
-
 }

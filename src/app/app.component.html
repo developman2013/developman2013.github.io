@@ -1,141 +1,64 @@
-<main class="main">
-  <div class="container-fluid">
-    <div class="row justify-content-center">
-      <app-menu class="col-lg-6"></app-menu>
-    </div>
-    <br />
+<app-menu [labels]="t.menu" [currentLang]="currentLang" (langChange)="onLangChange($event)" />
 
-    <div class="row justify-content-center">
-      <app-card
-        class="col-lg-6"
-        header="Automation through the eyes of a developer: Github Actions for a startup"
-        description="The article talks about such an interesting Github feature as “Github Actions”.
-          Once we analyzed how much time it took to perform simple actions such as updating a test server, creating database backups and running tests on each pull request, we decided: let’s go into automation.
-          In this article I talk about how a developer who has never dealt with automation can make Github work for him."
-        imgUrl="assets/material-logo.png"
-        extUrl="https://habr.com/ru/post/595627/"
-        tag="github-actions-material"
-      ></app-card>
+<main class="layout">
+  <section class="hero" id="top">
+    <p class="hero-kicker">{{ t.heroKicker }}</p>
+    <h1>{{ name }}</h1>
+    <p class="hero-lead">{{ t.heroLead }}</p>
+    <div class="hero-actions">
+      <a href="#materials" class="btn btn-primary">{{ t.readMaterials }}</a>
+      <a href="#projects" class="btn btn-secondary">{{ t.exploreProjects }}</a>
     </div>
-    <br />
-    <div class="row justify-content-center">
-      <app-card
-        class="col-lg-6"
-        header="Hackathon is the solution"
-        description="This material was written under the inspiration of hackathons, in which I had the opportunity to not only participate, but also organize.
-        The article was written from scratch. 
-        The main task was to tell that the hackathon is not only a newfangled get-together for bearded developers with beer bellies and sweaters with deer, but also an excellent tool for all event participants: organizers, sponsors, and the participants themselves.
-        Two hackathon scenarios were also considered: from the participant’s side and from the organizer’s side."
-        imgUrl="assets/01.jpg"
-        extUrl="https://habr.com/ru/post/414755/"
-        tag="hackathon-material"
-      ></app-card>
-    </div>
-    <br />
-    <div class="row justify-content-center">
-      <app-card
-        class="col-lg-6"
-        header="How a QA engineer saved a whole day of work by linking automated tests in Visual Studio"
-        description="The material was developed jointly with the Test IT team.
-        In this article, I talked about how developing extensions for the IDE can speed up the work of employees, in particular QA specialists. Along with the material, I developed an example of such an extension for Visual Studio 19.
-        The material was published on the Microsoft hub, the authorship of the material is indicated at the end.
-        Enjoy reading!"
-        imgUrl="assets/02.png"
-        extUrl="https://habr.com/ru/company/microsoft/blog/488566/"
-        tag="vs-extension-material"
-      ></app-card>
-    </div>
-    <br />
+  </section>
 
-    <div class="row justify-content-center">
-      <app-card
-        class="col-lg-6"
-        header="A story about how a QA Engineer simplified his life with webhooks using the example of Test IT, and what does the Bot Framework have to do with it"
-        description="The material was developed jointly with the Test IT team.
-        The material talks about communication problems within the team, as well as ways to solve such problems.
-        Along with writing the material, I implemented a small chat bot based on the Bot Framework, which is still hosted on Azure.
-        Enjoy reading!"
-        imgUrl="assets/03.png"
-        extUrl="https://habr.com/ru/post/481654/"
-        tag="chat-bot-material"
-      ></app-card>
+  <section id="materials" class="section">
+    <div class="section-head">
+      <h2>{{ t.materialsTitle }}</h2>
+      <p>{{ t.materialsLead }}</p>
     </div>
-    <br />
+    <div class="card-stack">
+      @for (item of t.materials; track item.tag) {
+        <app-card
+          [header]="item.header"
+          [description]="item.description"
+          [imgUrl]="item.imgUrl"
+          [extUrl]="item.extUrl ?? ''"
+          [tag]="item.tag"
+          [ctaLabel]="t.openSourceLabel"
+        />
+      }
+    </div>
+  </section>
 
-    <div class="row justify-content-center">
-      <app-card
-        class="col-lg-6"
-        header="Hour of Code"
-        description="As part of the MSP program and the Hour of Code campaign, the students and I conducted an educational lesson for middle and high schools.
-        We talked about the basics of algorithms using the well-known example of “Turtles”, and then started performing tasks on the promotion website.
-        As an achievement, all students (and this is as many as 6 classes!) successfully completed the tasks and received certificates for successfully completing the tasks of the action, and we received a lot of positive emotions.
-        Unfortunately, the link to the original source of the news has not been preserved."
-        imgUrl="assets/04.png"
-        tag="hour-of-code-event"
-      ></app-card>
+  <section id="projects" class="section">
+    <div class="section-head">
+      <h2>{{ t.projectsTitle }}</h2>
+      <p>{{ t.projectsLead }}</p>
     </div>
-    <br />
-    <div class="row justify-content-center">
-      <app-card
-        class="col-lg-6"
-        header="Student hackathon “math_hack”"
-        description="As part of the MSP program, we, as a team of students, organized and conducted the first hackathon for the university.
-        We attracted a sponsor for the event, which was the IBA Gomel company, thought over the theme, prepared a website with information and registration, developed posters for the event, advertised in other universities and colleges, developed a schedule for 2 days and eventually gathered more than fifty participants.
-        Ultimately, we received positive feedback about the event from everyone who took part, as well as a great and interesting experience.
-        You can read more about the event on the part of the university at the source."
-        imgUrl="assets/05.png"
-        tag="student-hackathon-event"
-        extUrl="http://www.gsu.by/ru/node/449"
-      ></app-card>
+    <div class="card-stack">
+      @for (item of t.projects; track item.tag) {
+        <app-card
+          [header]="item.header"
+          [description]="item.description"
+          [imgUrl]="item.imgUrl"
+          [extUrl]="item.extUrl ?? ''"
+          [tag]="item.tag"
+          [ctaLabel]="t.openSourceLabel"
+        />
+      }
     </div>
-    <br />
+  </section>
 
-    <div class="row justify-content-center">
-      <app-card
-        class="col-lg-6"
-        header="Lord of Time"
-        description="In a team of 3 developers, we developed a mobile application to track the time spent by the user on various areas of life.
-        The solution consists of a mobile client implemented using Xamarin.Forms, as well as a server part. The server part of the solution includes more than 15 microservices that can withstand very serious loads from clients.
-        Microservices: Nginx for routing requests and https, ASP.NET 5 WEB API for logic, Telegram Bot for notifications about possible problems in the production environment, PostgreSQL for storing user data. All this is under the Docker wrapper on a secure server.
-        The project's source code is not distributed."
-        imgUrl="assets/06.png"
-        tag="lord-of-time-project"
-      ></app-card>
+  <section class="section">
+    <div class="section-head">
+      <h2>{{ t.contactTitle }}</h2>
+      <p>{{ t.contactLead }}</p>
     </div>
-    <br />
-    <div class="row justify-content-center">
-      <app-card
-        class="col-lg-6"
-        header="Extension for Visual Studio"
-        description="The project is a helper extension for the Test IT platform.
-        The extension is implemented using Visual Studio SDK.
-        The extension, after its configuration, is capable of displaying logs about the results of passing autotests in the active solution, as well as collecting information about autotests from the project assembly and sending information about them to the Test IT TMS platform.
-        The project was implemented jointly with other developers. 
-        Details in the repository."
-        imgUrl="assets/07.png"
-        tag="vs-extension-project"
-        extUrl="https://github.com/developman2013/Test-IT-VS-Extension-sample"
-      ></app-card>
-    </div>
-    <br />
-    <div class="row justify-content-center">
-      <app-card
-        class="col-lg-6"
-        header="Chatbot for the platform"
-        description="The project is a chatbot for the Test IT platform.
-        The extension is implemented using Bot Framework on .NET Core.
-        The bot, after launch and deployment, is able to notify individual users about changes in the status of the test plan on the Test IT platform portal.
-        This web application contains an API controller for incoming notifications, after which, using a secret key link, the bot sends a notification message to a personal chat or chats where this secret key is specified. Currently the bot works in Telegram and Slack.
-        Details in the repository."
-        imgUrl="assets/08.png"
-        tag="chat-bot-project"
-        extUrl="https://github.com/developman2013/TestIT-bot-sample"
-      ></app-card>
-    </div>
-    <br />
-    <div class="row justify-content-center">
-      <app-contact class="col-lg-4"/>
-    </div>
-  </div>
+    <app-contact
+      [title]="t.contactCardTitle"
+      [description]="t.contactCardText"
+      [telegramLabel]="t.telegramLabel"
+      [emailLabel]="t.emailLabel"
+    />
+  </section>
 </main>
-<router-outlet />
