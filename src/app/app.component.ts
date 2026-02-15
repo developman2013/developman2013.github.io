@@ -30,6 +30,9 @@ type AppCopy = {
   materialsLead: string;
   projectsTitle: string;
   projectsLead: string;
+  githubTitle: string;
+  githubLead: string;
+  githubOpenProfile: string;
   contactTitle: string;
   contactLead: string;
   contactCardTitle: string;
@@ -49,6 +52,9 @@ type AppCopy = {
 })
 export class AppComponent {
   readonly name = 'Mikhail Pirahouski';
+  readonly githubSummaryUrl =
+    'https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=developman2013&theme=nord_dark';
+  readonly githubProfileUrl = 'https://github.com/developman2013';
   currentLang: Lang = this.detectLangFromUrl();
   currentTheme: Theme = this.detectTheme();
 
@@ -69,6 +75,9 @@ export class AppComponent {
       materialsLead: 'Selected publications on automation and engineering productivity.',
       projectsTitle: 'Code & Projects',
       projectsLead: 'Production-facing products and developer tooling.',
+      githubTitle: 'GitHub Profile Snapshot',
+      githubLead: 'Live activity summary generated from my GitHub profile.',
+      githubOpenProfile: 'Open GitHub profile',
       contactTitle: 'Contact',
       contactLead: 'Open for collaboration, product engineering and speaking opportunities.',
       contactCardTitle: 'Let\'s talk',
@@ -158,6 +167,9 @@ export class AppComponent {
       materialsLead: 'Выбранные публикации про автоматизацию и инженерную эффективность.',
       projectsTitle: 'Код и проекты',
       projectsLead: 'Продуктовые решения и инструменты для разработчиков.',
+      githubTitle: 'Сводка GitHub профиля',
+      githubLead: 'Актуальная карточка активности, собранная на основе моего GitHub профиля.',
+      githubOpenProfile: 'Открыть GitHub профиль',
       contactTitle: 'Контакты',
       contactLead: 'Открыт к сотрудничеству, продуктовой разработке и выступлениям.',
       contactCardTitle: 'Свяжитесь со мной',
