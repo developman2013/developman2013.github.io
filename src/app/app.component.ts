@@ -3,6 +3,7 @@ import { MenuComponent } from './menu/menu.component';
 import { CardComponent } from './card/card.component';
 import { ContactComponent } from './contact/contact.component';
 import { GithubSummaryComponent } from './github-summary/github-summary.component';
+import { buildGithubSummaryUrl, SITE_CONFIG } from './site.config';
 
 type Lang = 'en' | 'ru';
 type Theme = 'light' | 'dark';
@@ -53,9 +54,7 @@ type AppCopy = {
 })
 export class AppComponent {
   readonly name = 'Mikhail Pirahouski';
-  readonly githubSummaryUrl =
-    'https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=developman2013&theme=nord_dark';
-  readonly githubProfileUrl = 'https://github.com/developman2013';
+  readonly githubProfileUrl = SITE_CONFIG.github.profileUrl;
   currentLang: Lang = this.detectLangFromUrl();
   currentTheme: Theme = this.detectTheme();
 
@@ -248,6 +247,10 @@ export class AppComponent {
 
   get t(): AppCopy {
     return this.copy[this.currentLang];
+  }
+
+  get githubSummaryUrl(): string {
+    return buildGithubSummaryUrl(this.currentTheme);
   }
 
   onLangChange(lang: Lang) {
