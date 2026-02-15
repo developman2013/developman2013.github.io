@@ -1,27 +1,77 @@
-# PirahouskiApp
+# Mikhail Pirahouski Website
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.1.
+Personal portfolio website built with Angular.
 
-## Development server
+## Stack
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Angular 21
+- TypeScript
+- GitHub Actions + GitHub Pages
 
-## Code scaffolding
+## Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Responsive single-page portfolio layout
+- RU/EN localization with language switch
+- Language support via URL query (`?lang=ru` / `?lang=en`)
+- Light/Dark theme switch with persisted preference
+- Custom domain support (`pirahouski.com`)
+
+## Local Development
+
+Install dependencies:
+
+```bash
+npm ci
+```
+
+Run local dev server:
+
+```bash
+npm start
+```
+
+App is available at:
+
+- `http://localhost:4200/`
+- `http://localhost:4200/?lang=ru`
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+npm run build
+```
 
-## Running unit tests
+Build output is generated in `dist/`.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Deployment
 
-## Running end-to-end tests
+Deployment is handled by GitHub Actions via:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- `.github/workflows/deploy-pages.yml`
 
-## Further help
+On push to `master`, the workflow builds the app and publishes `dist/browser` to GitHub Pages.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## CI
+
+CI checks run via:
+
+- `.github/workflows/ci.yml`
+
+Current required check:
+
+- `npm run build`
+
+## Branch and PR Workflow
+
+- Work only in feature branches
+- Open PRs into `master`
+- Merge changes via PR only
+- Do not push directly to `master`
+
+## Useful Commands
+
+```bash
+npm start        # run local dev server
+npm run build    # production build
+npm test         # unit tests
+```
