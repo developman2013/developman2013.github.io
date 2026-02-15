@@ -1,23 +1,11 @@
-<div id="contact" class="row content">
-    <div class="col-lg-12">
-        <div class="card text-white bg-dark">
-            <div class="row">
-                <div class="col-lg-4">
-                    <img class="card-img-top m-3 rounded-circle" src="assets/me.jpg" alt="аватар">
-                </div>
-                <div class="col-lg-8">
-                    <h4 class="card-title">You can contact me here:</h4>
-                    <p class="card-text contacts">
-                        <a target="_blank" href="https://t.me/mihailych007">
-                            <button type="button" class="btn btn-light">Telegram</button>
-                        </a>
-                        <a target="_blank" href="mailto:mikhail@pirahouski.com">
-                            <button type="button" class="btn btn-light">Email</button>
-                        </a>
-                    </p>
-
-                </div>
-            </div>
-        </div>
+<article id="contact" class="contact-card">
+  <img class="avatar" src="assets/me.jpg" alt="Mikhail Pirahouski" />
+  <div class="contact-body">
+    <h3>{{ title }}</h3>
+    <p>{{ description }}</p>
+    <div class="contact-actions">
+      <a target="_blank" rel="noopener" href="https://t.me/mihailych007">{{ telegramLabel }}</a>
+      <a target="_blank" rel="noopener" href="mailto:mikhail@pirahouski.com">{{ emailLabel }}</a>
     </div>
-</div>
+  </div>
+</article>
