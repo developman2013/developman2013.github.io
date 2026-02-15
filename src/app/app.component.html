@@ -8,9 +8,14 @@
 
 <main class="layout">
   <section class="hero" id="top">
-    <p class="hero-kicker">{{ t.heroKicker }}</p>
-    <h1>{{ name }}</h1>
-    <p class="hero-lead">{{ t.heroLead }}</p>
+    <div class="hero-intro">
+      <img class="hero-avatar" src="assets/me.jpg" alt="Mikhail Pirahouski" />
+      <div class="hero-text">
+        <p class="hero-kicker">{{ t.heroKicker }}</p>
+        <h1>{{ name }}</h1>
+        <p class="hero-lead">{{ t.heroLead }}</p>
+      </div>
+    </div>
     <div class="hero-actions">
       <a [attr.href]="anchorHref('materials')" class="btn btn-primary">{{ t.readMaterials }}</a>
       <a [attr.href]="anchorHref('projects')" class="btn btn-secondary">{{ t.exploreProjects }}</a>
