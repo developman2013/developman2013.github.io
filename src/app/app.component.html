@@ -22,21 +22,13 @@
     </div>
   </section>
 
-  <section class="section github-section" id="github">
-    <div class="section-head">
-      <h2>{{ t.githubTitle }}</h2>
-      <p>{{ t.githubLead }}</p>
-    </div>
-    <a
-      class="github-card-link"
-      [href]="githubProfileUrl"
-      target="_blank"
-      rel="noopener noreferrer"
-      [attr.aria-label]="t.githubOpenProfile"
-    >
-      <img class="github-card-image" [src]="githubSummaryUrl" alt="GitHub profile details for developman2013" />
-    </a>
-  </section>
+  <app-github-summary
+    [title]="t.githubTitle"
+    [lead]="t.githubLead"
+    [openProfileLabel]="t.githubOpenProfile"
+    [summaryUrl]="githubSummaryUrl"
+    [profileUrl]="githubProfileUrl"
+  />
 
   <section id="materials" class="section">
     <div class="section-head">
