@@ -23,4 +23,8 @@ export class MenuComponent {
   setLang(lang: Lang) {
     this.langChange.emit(lang);
   }
+
+  anchorHref(fragment: 'top' | 'materials' | 'projects' | 'contact'): string {
+    return `?lang=${this.currentLang}#${fragment}`;
+  }
 }
