@@ -24,4 +24,6 @@
 - [ ] Frontend review completed (`frontend-agent`)
 - [ ] QA review completed (`qa-agent`)
 - [ ] Release flow respected (`release-agent`)
+- [ ] Explicit user approval received for PR creation
+- [ ] Explicit user approval received for PR merge
 - [ ] No direct push to `master`
