@@ -1,0 +1,15 @@
+<section class="section github-section" id="github">
+  <div class="section-head">
+    <h2>{{ title }}</h2>
+    <p>{{ lead }}</p>
+  </div>
+  <a
+    class="github-card-link"
+    [href]="profileUrl"
+    target="_blank"
+    rel="noopener noreferrer"
+    [attr.aria-label]="openProfileLabel"
+  >
+    <img class="github-card-image" [src]="summaryUrl" alt="GitHub profile details for developman2013" />
+  </a>
+</section>

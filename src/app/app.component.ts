@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MenuComponent } from './menu/menu.component';
 import { CardComponent } from './card/card.component';
 import { ContactComponent } from './contact/contact.component';
+import { GithubSummaryComponent } from './github-summary/github-summary.component';
 
 type Lang = 'en' | 'ru';
 type Theme = 'light' | 'dark';
@@ -46,7 +47,7 @@ type AppCopy = {
 
 @Component({
   selector: 'app-root',
-  imports: [MenuComponent, CardComponent, ContactComponent],
+  imports: [MenuComponent, CardComponent, ContactComponent, GithubSummaryComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
