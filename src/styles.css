@@ -7,6 +7,7 @@
   --accent: #0071e3;
   --accent-dark: #005bb5;
   --shadow: 0 12px 34px rgba(0, 0, 0, 0.08);
+  --anchor-offset: 86px;
 }
 
 [data-theme='dark'] {
@@ -30,6 +31,10 @@ body {
   min-height: 100%;
 }
 
+html {
+  scroll-padding-top: var(--anchor-offset);
+}
+
 body {
   font-family: 'SF Pro Text', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   color: var(--ink);
@@ -49,4 +54,17 @@ body {
 
 a {
   color: inherit;
+}
+
+#top,
+#materials,
+#projects,
+#contact {
+  scroll-margin-top: var(--anchor-offset);
+}
+
+@media (max-width: 760px) {
+  :root {
+    --anchor-offset: 136px;
+  }
 }
