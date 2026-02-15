@@ -7,8 +7,20 @@
     <a [attr.href]="anchorHref('contact')">{{ labels.contact }}</a>
   </nav>
 
-  <div class="lang-switch" [attr.aria-label]="labels.language">
-    <button type="button" [class.active]="currentLang === 'en'" (click)="setLang('en')">EN</button>
-    <button type="button" [class.active]="currentLang === 'ru'" (click)="setLang('ru')">RU</button>
+  <div class="controls">
+    <button
+      type="button"
+      class="theme-toggle"
+      [class.active]="darkThemeEnabled"
+      [attr.aria-label]="labels.theme"
+      (click)="toggleTheme()"
+    >
+      ☾
+    </button>
+
+    <div class="lang-switch" [attr.aria-label]="labels.language">
+      <button type="button" [class.active]="currentLang === 'en'" (click)="setLang('en')">EN</button>
+      <button type="button" [class.active]="currentLang === 'ru'" (click)="setLang('ru')">RU</button>
+    </div>
   </div>
 </header>

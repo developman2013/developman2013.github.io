@@ -7,6 +7,7 @@ type MenuLabels = {
   projects: string;
   contact: string;
   language: string;
+  theme: string;
 };
 
 @Component({
@@ -18,10 +19,16 @@ type MenuLabels = {
 export class MenuComponent {
   @Input({ required: true }) labels!: MenuLabels;
   @Input() currentLang: Lang = 'en';
+  @Input() darkThemeEnabled = false;
   @Output() langChange = new EventEmitter<Lang>();
+  @Output() themeToggle = new EventEmitter<void>();
 
   setLang(lang: Lang) {
     this.langChange.emit(lang);
+  }
+
+  toggleTheme() {
+    this.themeToggle.emit();
   }
 
   anchorHref(fragment: 'top' | 'materials' | 'projects' | 'contact'): string {

@@ -4,6 +4,7 @@ import { CardComponent } from './card/card.component';
 import { ContactComponent } from './contact/contact.component';
 
 type Lang = 'en' | 'ru';
+type Theme = 'light' | 'dark';
 
 type ShowcaseItem = {
   header: string;
@@ -19,6 +20,7 @@ type AppCopy = {
     projects: string;
     contact: string;
     language: string;
+    theme: string;
   };
   heroKicker: string;
   heroLead: string;
@@ -48,6 +50,7 @@ type AppCopy = {
 export class AppComponent {
   readonly name = 'Mikhail Pirahouski';
   currentLang: Lang = this.detectLangFromUrl();
+  currentTheme: Theme = this.detectTheme();
 
   private readonly copy: Record<Lang, AppCopy> = {
     en: {
@@ -55,7 +58,8 @@ export class AppComponent {
         materials: 'Materials',
         projects: 'Projects',
         contact: 'Contact',
-        language: 'Language switch'
+        language: 'Language switch',
+        theme: 'Toggle dark theme'
       },
       heroKicker: 'Software Engineer • Community Builder',
       heroLead: 'I build practical software, write technical stories, and turn delivery chaos into repeatable systems.',
@@ -143,7 +147,8 @@ export class AppComponent {
         materials: 'Материалы',
         projects: 'Проекты',
         contact: 'Контакты',
-        language: 'Переключение языка'
+        language: 'Переключение языка',
+        theme: 'Переключить темную тему'
       },
       heroKicker: 'Инженер-программист • Создатель сообществ',
       heroLead: 'Я создаю практичные продукты, пишу технические материалы и превращаю хаос в поставке в повторяемые процессы.',
@@ -240,12 +245,19 @@ export class AppComponent {
     this.writeLangToUrl(lang);
   }
 
+  onThemeToggle() {
+    this.currentTheme = this.currentTheme === 'dark' ? 'light' : 'dark';
+    this.applyTheme(this.currentTheme);
+    this.writeThemeToStorage(this.currentTheme);
+  }
+
   anchorHref(fragment: 'materials' | 'projects'): string {
     return `?lang=${this.currentLang}#${fragment}`;
   }
 
   constructor() {
     this.writeLangToUrl(this.currentLang);
+    this.applyTheme(this.currentTheme);
   }
 
   private detectLangFromUrl(): Lang {
@@ -275,6 +287,34 @@ export class AppComponent {
     const url = new URL(window.location.href);
     url.searchParams.set('lang', lang);
     window.history.replaceState({}, '', `${url.pathname}${url.search}${url.hash}`);
+  }
+
+  private detectTheme(): Theme {
+    if (typeof window === 'undefined') {
+      return 'light';
+    }
+
+    const stored = window.localStorage.getItem('theme');
+    if (stored === 'light' || stored === 'dark') {
+      return stored;
+    }
+
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  private writeThemeToStorage(theme: Theme) {
+    if (typeof window === 'undefined') {
+      return;
+    }
+    window.localStorage.setItem('theme', theme);
+  }
+
+  private applyTheme(theme: Theme) {
+    if (typeof document === 'undefined') {
+      return;
+    }
+    document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.setAttribute('data-bs-theme', theme);
   }
 
   private isLang(value: string | null | undefined): value is Lang {
