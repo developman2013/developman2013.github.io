@@ -240,6 +240,10 @@ export class AppComponent {
     this.writeLangToUrl(lang);
   }
 
+  anchorHref(fragment: 'materials' | 'projects'): string {
+    return `?lang=${this.currentLang}#${fragment}`;
+  }
+
   constructor() {
     this.writeLangToUrl(this.currentLang);
   }

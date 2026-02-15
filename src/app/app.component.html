@@ -6,8 +6,8 @@
     <h1>{{ name }}</h1>
     <p class="hero-lead">{{ t.heroLead }}</p>
     <div class="hero-actions">
-      <a href="#materials" class="btn btn-primary">{{ t.readMaterials }}</a>
-      <a href="#projects" class="btn btn-secondary">{{ t.exploreProjects }}</a>
+      <a [attr.href]="anchorHref('materials')" class="btn btn-primary">{{ t.readMaterials }}</a>
+      <a [attr.href]="anchorHref('projects')" class="btn btn-secondary">{{ t.exploreProjects }}</a>
     </div>
   </section>
 

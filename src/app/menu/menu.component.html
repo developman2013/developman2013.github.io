@@ -1,10 +1,10 @@
 <header class="topbar">
-  <a class="brand" href="#top">pirahouski</a>
+  <a class="brand" [attr.href]="anchorHref('top')">pirahouski</a>
 
   <nav class="links" aria-label="Main">
-    <a href="#materials">{{ labels.materials }}</a>
-    <a href="#projects">{{ labels.projects }}</a>
-    <a href="#contact">{{ labels.contact }}</a>
+    <a [attr.href]="anchorHref('materials')">{{ labels.materials }}</a>
+    <a [attr.href]="anchorHref('projects')">{{ labels.projects }}</a>
+    <a [attr.href]="anchorHref('contact')">{{ labels.contact }}</a>
   </nav>
 
   <div class="lang-switch" [attr.aria-label]="labels.language">
