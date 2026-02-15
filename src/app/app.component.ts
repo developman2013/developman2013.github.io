@@ -160,7 +160,7 @@ export class AppComponent {
       projectsLead: 'Продуктовые решения и инструменты для разработчиков.',
       contactTitle: 'Контакты',
       contactLead: 'Открыт к сотрудничеству, продуктовой разработке и выступлениям.',
-      contactCardTitle: 'Давайте на связи',
+      contactCardTitle: 'Свяжитесь со мной',
       contactCardText: 'Если хотите обсудить инженерное лидерство, поставку продукта или сотрудничество, буду рад пообщаться.',
       openSourceLabel: 'Открыть источник',
       telegramLabel: 'Телеграм',
