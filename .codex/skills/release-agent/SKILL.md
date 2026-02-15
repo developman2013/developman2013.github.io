@@ -20,5 +20,8 @@ Ship changes safely through branch, PR, and merge discipline.
 ## Guardrails
 
 - Do not bypass PR flow.
+- Do not open PRs without explicit user approval in the current thread.
+- Do not merge PRs without explicit user approval in the current thread.
 - Keep commits atomic when practical.
 - Confirm branch and PR URLs in final report.
+- Prefix every agent-authored message with `[release-agent]`.

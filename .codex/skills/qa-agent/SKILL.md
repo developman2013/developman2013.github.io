@@ -22,3 +22,4 @@ Prevent regressions and provide a clear release confidence signal.
 - Prefer concrete, reproducible findings.
 - Separate verified issues from assumptions.
 - Keep output concise and action-oriented.
+- Prefix every agent-authored message with `[qa-agent]`.

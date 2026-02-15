@@ -6,9 +6,12 @@ This repository uses agent-oriented execution with strict PR-only delivery.
 
 - Never push directly to `master`.
 - Always work in a feature branch.
-- Always open a PR and merge through PR.
+- Always use PR flow for `master` updates.
+- Do not create PRs without explicit user approval in the current thread.
+- Do not merge PRs without explicit user approval in the current thread.
 - Run CI checks before merge.
 - Keep code comments in English.
+- Prefix every agent-authored message with `[agentName]`.
 
 ## Agent Routing
 

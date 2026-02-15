@@ -23,3 +23,4 @@ Deliver production-ready frontend changes in Angular with minimal regression ris
 - Keep naming and file structure consistent with existing patterns.
 - Do not introduce dead CSS or unused inputs.
 - Keep comments in code English-only.
+- Prefix every agent-authored message with `[frontend-agent]`.
