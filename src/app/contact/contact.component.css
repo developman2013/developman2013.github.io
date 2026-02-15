@@ -41,7 +41,7 @@
   padding: 0.48rem 0.85rem;
   font-weight: 600;
   border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.96);
+  background: var(--panel);
 }
 
 .contact-actions a:hover {

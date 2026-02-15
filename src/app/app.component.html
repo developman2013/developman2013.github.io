@@ -1,4 +1,10 @@
-<app-menu [labels]="t.menu" [currentLang]="currentLang" (langChange)="onLangChange($event)" />
+<app-menu
+  [labels]="t.menu"
+  [currentLang]="currentLang"
+  [darkThemeEnabled]="currentTheme === 'dark'"
+  (langChange)="onLangChange($event)"
+  (themeToggle)="onThemeToggle()"
+/>
 
 <main class="layout">
   <section class="hero" id="top">
