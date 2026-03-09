@@ -13,12 +13,13 @@
       class="theme-toggle"
       [class.active]="darkThemeEnabled"
       [attr.aria-label]="labels.theme"
+      [attr.aria-pressed]="darkThemeEnabled"
       (click)="toggleTheme()"
     >
       ☾
     </button>
 
-    <div class="lang-switch" [attr.aria-label]="labels.language">
+    <div class="lang-switch" role="group" [attr.aria-label]="labels.language">
       <button type="button" [class.active]="currentLang === 'en'" (click)="setLang('en')">EN</button>
       <button type="button" [class.active]="currentLang === 'ru'" (click)="setLang('ru')">RU</button>
     </div>

@@ -30,6 +30,7 @@ type AppCopy = {
   };
   heroKicker: string;
   heroLead: string;
+  skipToContent: string;
   readMaterials: string;
   exploreProjects: string;
   materialsTitle: string;
@@ -78,6 +79,7 @@ export class AppComponent {
       },
       heroKicker: 'Software Engineer • Community Builder',
       heroLead: 'I build practical software, write technical stories, and turn delivery chaos into repeatable systems.',
+      skipToContent: 'Skip to content',
       readMaterials: 'Read materials',
       exploreProjects: 'Explore projects',
       materialsTitle: 'Materials',
@@ -172,6 +174,7 @@ export class AppComponent {
       },
       heroKicker: 'Инженер-программист • Создатель сообществ',
       heroLead: 'Я создаю практичные продукты, пишу технические материалы и превращаю хаос в поставке в повторяемые процессы.',
+      skipToContent: 'Перейти к содержанию',
       readMaterials: 'Читать материалы',
       exploreProjects: 'Смотреть проекты',
       materialsTitle: 'Материалы',

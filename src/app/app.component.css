@@ -1,3 +1,21 @@
+.skip-link {
+  position: absolute;
+  left: 0.8rem;
+  top: -56px;
+  z-index: 60;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: top 0.18s ease;
+}
+
+.skip-link:focus-visible {
+  top: 0.8rem;
+}
+
 .layout {
   width: min(1120px, calc(100% - 2rem));
   margin: 1rem auto 4rem;

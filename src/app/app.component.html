@@ -1,3 +1,5 @@
+<a class="skip-link" href="#main-content">{{ t.skipToContent }}</a>
+
 <app-menu
   [labels]="t.menu"
   [currentLang]="currentLang"
@@ -6,7 +8,7 @@
   (themeToggle)="onThemeToggle()"
 />
 
-<main class="layout">
+<main class="layout" id="main-content">
   <section class="hero" id="top">
     <div class="hero-intro">
       <img
@@ -26,8 +28,8 @@
       </div>
     </div>
     <div class="hero-actions">
-      <a [attr.href]="anchorHref('materials')" class="btn btn-primary">{{ t.readMaterials }}</a>
-      <a [attr.href]="anchorHref('projects')" class="btn btn-secondary">{{ t.exploreProjects }}</a>
+      <a [attr.href]="anchorHref('materials')" class="btn btn-primary" [attr.aria-label]="t.readMaterials">{{ t.readMaterials }}</a>
+      <a [attr.href]="anchorHref('projects')" class="btn btn-secondary" [attr.aria-label]="t.exploreProjects">{{ t.exploreProjects }}</a>
     </div>
   </section>
 
