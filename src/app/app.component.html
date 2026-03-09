@@ -41,6 +41,7 @@
       [openProfileLabel]="t.githubOpenProfile"
       [summaryUrl]="githubSummaryUrl"
       [profileUrl]="githubProfileUrl"
+      (openProfileClick)="onOpenGithubProfile()"
     />
   } @placeholder {
     <section class="section">
@@ -66,6 +67,7 @@
             [extUrl]="item.extUrl ?? ''"
             [tag]="item.tag"
             [ctaLabel]="t.openSourceLabel"
+            (ctaClick)="onCardCtaClick($event)"
           />
         }
       </div>
@@ -91,6 +93,7 @@
       [extUrl]="featuredProject.extUrl ?? ''"
       [tag]="featuredProject.tag"
       [ctaLabel]="t.openSourceLabel"
+      (ctaClick)="onCardCtaClick($event)"
     />
   </section>
 
@@ -109,6 +112,7 @@
             [extUrl]="item.extUrl ?? ''"
             [tag]="item.tag"
             [ctaLabel]="t.openSourceLabel"
+            (ctaClick)="onCardCtaClick($event)"
           />
         }
       </div>
@@ -132,6 +136,8 @@
       [description]="t.contactCardText"
       [telegramLabel]="t.telegramLabel"
       [emailLabel]="t.emailLabel"
+      (telegramClick)="onTelegramOpen()"
+      (emailClick)="onEmailOpen()"
     />
   </section>
 </main>
