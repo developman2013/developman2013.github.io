@@ -4,8 +4,8 @@
     <h3>{{ title }}</h3>
     <p>{{ description }}</p>
     <div class="contact-actions">
-      <a target="_blank" rel="noopener" href="https://t.me/mihailych007">{{ telegramLabel }}</a>
-      <a target="_blank" rel="noopener" href="mailto:mikhail@pirahouski.com">{{ emailLabel }}</a>
+      <a target="_blank" rel="noopener" href="https://t.me/mihailych007" (click)="onTelegramClick()">{{ telegramLabel }}</a>
+      <a target="_blank" rel="noopener" href="mailto:mikhail@pirahouski.com" (click)="onEmailClick()">{{ emailLabel }}</a>
     </div>
   </div>
 </article>

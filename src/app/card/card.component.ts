@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 
 @Component({
   selector: 'app-card',
@@ -13,6 +13,7 @@ export class CardComponent implements OnChanges {
   @Input() extUrl: string = '';
   @Input() tag: string = '';
   @Input() ctaLabel: string = 'Open source';
+  @Output() ctaClick = new EventEmitter<string>();
 
   public descriptionArr: string[] = [];
 
@@ -21,5 +22,11 @@ export class CardComponent implements OnChanges {
       .split('\n')
       .map((paragraph) => paragraph.trim())
       .filter(Boolean);
+  }
+
+  onCtaClick() {
+    if (this.extUrl) {
+      this.ctaClick.emit(this.tag);
+    }
   }
 }

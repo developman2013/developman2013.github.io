@@ -10,7 +10,7 @@
       }
     </div>
     @if (extUrl) {
-      <a class="cta" target="_blank" rel="noopener" [href]="extUrl">{{ ctaLabel }}</a>
+      <a class="cta" target="_blank" rel="noopener" [href]="extUrl" (click)="onCtaClick()">{{ ctaLabel }}</a>
     }
   </div>
 </article>

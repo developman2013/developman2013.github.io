@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-github-summary',
@@ -12,4 +12,9 @@ export class GithubSummaryComponent {
   @Input({ required: true }) openProfileLabel!: string;
   @Input({ required: true }) summaryUrl!: string;
   @Input({ required: true }) profileUrl!: string;
+  @Output() openProfileClick = new EventEmitter<void>();
+
+  onOpenProfileClick() {
+    this.openProfileClick.emit();
+  }
 }

@@ -10,6 +10,7 @@ import { buildGithubSummaryUrl, SITE_CONFIG } from './site.config';
 
 type Theme = 'light' | 'dark';
 type Section = 'top' | 'materials' | 'projects' | 'contact';
+type AnalyticsProps = Record<string, string | number | boolean>;
 
 type AppCopy = {
   seoTitle: string;
@@ -155,12 +156,30 @@ export class AppComponent {
     this.currentLang = lang;
     this.writeLangToUrl(lang);
     this.updateSeo();
+    this.trackEvent('language_switch', { lang });
   }
 
   onThemeToggle() {
     this.currentTheme = this.currentTheme === 'dark' ? 'light' : 'dark';
     this.applyTheme(this.currentTheme);
     this.writeThemeToStorage(this.currentTheme);
+    this.trackEvent('theme_toggle', { theme: this.currentTheme });
+  }
+
+  onCardCtaClick(tag: string) {
+    this.trackEvent('card_cta_click', { tag, lang: this.currentLang });
+  }
+
+  onOpenGithubProfile() {
+    this.trackEvent('github_profile_open', { lang: this.currentLang });
+  }
+
+  onTelegramOpen() {
+    this.trackEvent('contact_telegram_open', { lang: this.currentLang });
+  }
+
+  onEmailOpen() {
+    this.trackEvent('contact_email_open', { lang: this.currentLang });
   }
 
   anchorHref(fragment: 'materials' | 'projects'): string {
@@ -176,6 +195,7 @@ export class AppComponent {
     this.applyTheme(this.currentTheme);
     this.updateSeo();
     this.syncActiveSection();
+    this.initAnalytics();
   }
 
   @HostListener('window:scroll')
@@ -378,5 +398,33 @@ export class AppComponent {
 
   private isSection(value: string | null | undefined): value is Section {
     return value === 'top' || value === 'materials' || value === 'projects' || value === 'contact';
+  }
+
+  private initAnalytics() {
+    if (typeof document === 'undefined') {
+      return;
+    }
+
+    const analytics = SITE_CONFIG.analytics;
+    if (!analytics.enabled || analytics.provider !== 'plausible') {
+      return;
+    }
+
+    if (!document.querySelector(`script[src="${analytics.scriptUrl}"]`)) {
+      const script = document.createElement('script');
+      script.defer = true;
+      script.dataset['domain'] = analytics.domain;
+      script.src = analytics.scriptUrl;
+      document.head.appendChild(script);
+    }
+  }
+
+  private trackEvent(name: string, props: AnalyticsProps) {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const plausible = (window as Window & { plausible?: (eventName: string, eventData?: { props?: AnalyticsProps }) => void }).plausible;
+    plausible?.(name, { props });
   }
 }

@@ -6,6 +6,12 @@ export const SITE_CONFIG = {
       light: 'default',
       dark: 'dark'
     }
+  },
+  analytics: {
+    provider: 'plausible',
+    enabled: true,
+    domain: 'pirahouski.com',
+    scriptUrl: 'https://plausible.io/js/script.js'
   }
 } as const;
 
