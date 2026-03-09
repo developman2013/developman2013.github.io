@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, Inject } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 import { MenuComponent } from './menu/menu.component';
 import { CardComponent } from './card/card.component';
 import { ContactComponent } from './contact/contact.component';
@@ -17,6 +19,8 @@ type ShowcaseItem = {
 };
 
 type AppCopy = {
+  seoTitle: string;
+  seoDescription: string;
   menu: {
     materials: string;
     projects: string;
@@ -58,8 +62,13 @@ export class AppComponent {
   currentLang: Lang = this.detectLangFromUrl();
   currentTheme: Theme = this.detectTheme();
 
+  private canonicalLinkEl: HTMLLinkElement | null = null;
+  private readonly baseUrl = 'https://pirahouski.com';
+
   private readonly copy: Record<Lang, AppCopy> = {
     en: {
+      seoTitle: 'Mikhail Pirahouski | Software Engineer Portfolio',
+      seoDescription: 'Portfolio of Mikhail Pirahouski: engineering projects, technical publications, and collaboration contacts.',
       menu: {
         materials: 'Materials',
         projects: 'Projects',
@@ -152,6 +161,8 @@ export class AppComponent {
       ]
     },
     ru: {
+      seoTitle: 'Михаил Пирахоуски | Портфолио инженера-программиста',
+      seoDescription: 'Портфолио Михаила Пирахоуски: инженерные проекты, технические публикации и контакты для сотрудничества.',
       menu: {
         materials: 'Материалы',
         projects: 'Проекты',
@@ -259,6 +270,7 @@ export class AppComponent {
     }
     this.currentLang = lang;
     this.writeLangToUrl(lang);
+    this.updateSeo();
   }
 
   onThemeToggle() {
@@ -271,9 +283,14 @@ export class AppComponent {
     return `?lang=${this.currentLang}#${fragment}`;
   }
 
-  constructor() {
+  constructor(
+    private readonly title: Title,
+    private readonly meta: Meta,
+    @Inject(DOCUMENT) private readonly document: Document
+  ) {
     this.writeLangToUrl(this.currentLang);
     this.applyTheme(this.currentTheme);
+    this.updateSeo();
   }
 
   private detectLangFromUrl(): Lang {
@@ -331,6 +348,111 @@ export class AppComponent {
     }
     document.documentElement.setAttribute('data-theme', theme);
     document.documentElement.setAttribute('data-bs-theme', theme);
+  }
+
+  private updateSeo() {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const text = this.t;
+    this.title.setTitle(text.seoTitle);
+
+    const canonicalUrl = `${this.baseUrl}/?lang=${this.currentLang}`;
+    this.document.documentElement.setAttribute('lang', this.currentLang);
+
+    this.meta.updateTag({ name: 'description', content: text.seoDescription });
+    this.meta.updateTag({ property: 'og:type', content: 'website' });
+    this.meta.updateTag({ property: 'og:site_name', content: 'Mikhail Pirahouski' });
+    this.meta.updateTag({ property: 'og:title', content: text.seoTitle });
+    this.meta.updateTag({ property: 'og:description', content: text.seoDescription });
+    this.meta.updateTag({ property: 'og:url', content: canonicalUrl });
+    this.meta.updateTag({ property: 'og:image', content: `${this.baseUrl}/assets/me.jpg` });
+    this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
+    this.meta.updateTag({ name: 'twitter:title', content: text.seoTitle });
+    this.meta.updateTag({ name: 'twitter:description', content: text.seoDescription });
+    this.meta.updateTag({ name: 'twitter:image', content: `${this.baseUrl}/assets/me.jpg` });
+
+    this.ensureCanonical(canonicalUrl);
+    this.ensureHreflangLinks();
+    this.updateStructuredData();
+  }
+
+  private ensureCanonical(canonicalUrl: string) {
+    if (!this.canonicalLinkEl) {
+      this.canonicalLinkEl = this.document.createElement('link');
+      this.canonicalLinkEl.setAttribute('rel', 'canonical');
+      this.document.head.appendChild(this.canonicalLinkEl);
+    }
+    this.canonicalLinkEl.setAttribute('href', canonicalUrl);
+  }
+
+  private ensureHreflangLinks() {
+    this.upsertAltLink('en', `${this.baseUrl}/?lang=en`);
+    this.upsertAltLink('ru', `${this.baseUrl}/?lang=ru`);
+    this.upsertAltLink('x-default', `${this.baseUrl}/?lang=en`);
+  }
+
+  private upsertAltLink(hreflang: string, href: string) {
+    const selector = `link[rel="alternate"][hreflang="${hreflang}"]`;
+    let link = this.document.head.querySelector(selector) as HTMLLinkElement | null;
+    if (!link) {
+      link = this.document.createElement('link');
+      link.setAttribute('rel', 'alternate');
+      link.setAttribute('hreflang', hreflang);
+      this.document.head.appendChild(link);
+    }
+    link.setAttribute('href', href);
+  }
+
+  private updateStructuredData() {
+    const scriptId = 'structured-data-jsonld';
+    let script = this.document.getElementById(scriptId) as HTMLScriptElement | null;
+    if (!script) {
+      script = this.document.createElement('script');
+      script.id = scriptId;
+      script.type = 'application/ld+json';
+      this.document.head.appendChild(script);
+    }
+
+    const primaryMaterial = this.t.materials[0];
+    const primaryProject = this.t.projects[0];
+
+    const graph = {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Person',
+          name: this.name,
+          url: `${this.baseUrl}/`,
+          image: `${this.baseUrl}/assets/me.jpg`,
+          sameAs: [this.githubProfileUrl, 'https://t.me/mihailych007'],
+          jobTitle: this.currentLang === 'ru' ? 'Инженер-программист' : 'Software Engineer'
+        },
+        {
+          '@type': 'WebSite',
+          name: this.name,
+          url: `${this.baseUrl}/`,
+          inLanguage: [this.currentLang]
+        },
+        {
+          '@type': 'CreativeWork',
+          name: primaryMaterial.header,
+          description: primaryMaterial.description.split('\n')[0],
+          url: primaryMaterial.extUrl ?? `${this.baseUrl}/#materials`,
+          inLanguage: this.currentLang
+        },
+        {
+          '@type': 'CreativeWork',
+          name: primaryProject.header,
+          description: primaryProject.description.split('\n')[0],
+          url: primaryProject.extUrl ?? `${this.baseUrl}/#projects`,
+          inLanguage: this.currentLang
+        }
+      ]
+    };
+
+    script.textContent = JSON.stringify(graph);
   }
 
   private isLang(value: string | null | undefined): value is Lang {
