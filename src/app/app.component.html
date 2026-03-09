@@ -58,7 +58,7 @@
         <p>{{ t.materialsLead }}</p>
       </div>
       <div class="card-stack">
-        @for (item of t.materials; track item.tag) {
+        @for (item of materials; track item.tag) {
           <app-card
             [header]="item.header"
             [description]="item.description"
@@ -79,6 +79,21 @@
     </section>
   }
 
+  <section class="section">
+    <div class="section-head">
+      <h2>{{ t.featuredTitle }}</h2>
+      <p>{{ t.featuredLead }}</p>
+    </div>
+    <app-card
+      [header]="featuredProject.header"
+      [description]="featuredProject.description"
+      [imgUrl]="featuredProject.imgUrl"
+      [extUrl]="featuredProject.extUrl ?? ''"
+      [tag]="featuredProject.tag"
+      [ctaLabel]="t.openSourceLabel"
+    />
+  </section>
+
   @defer (on viewport) {
     <section id="projects" class="section">
       <div class="section-head">
@@ -86,7 +101,7 @@
         <p>{{ t.projectsLead }}</p>
       </div>
       <div class="card-stack">
-        @for (item of t.projects; track item.tag) {
+        @for (item of projects; track item.tag) {
           <app-card
             [header]="item.header"
             [description]="item.description"
