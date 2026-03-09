@@ -4,7 +4,7 @@ export const SITE_CONFIG = {
     profileUrl: 'https://github.com/developman2013',
     summaryThemes: {
       light: 'default',
-      dark: 'nord_dark'
+      dark: 'dark'
     }
   }
 } as const;
@@ -12,5 +12,5 @@ export const SITE_CONFIG = {
 export function buildGithubSummaryUrl(theme: 'light' | 'dark'): string {
   const { username, summaryThemes } = SITE_CONFIG.github;
   const cardTheme = theme === 'dark' ? summaryThemes.dark : summaryThemes.light;
-  return `https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=${username}&theme=${cardTheme}`;
+  return `https://streak-stats.demolab.com?user=${username}&theme=${cardTheme}`;
 }
