@@ -35,7 +35,7 @@
   text-decoration: none;
   font-weight: 500;
   color: var(--ink);
-  opacity: 0.72;
+  opacity: 0.84;
   transition: opacity 0.18s ease;
 }
 
