@@ -14,7 +14,9 @@
     "hono": "4.12.5",
     "express-rate-limit": "8.2.2",
     "qs": "6.15.0",
-    "tmp": "0.2.5"
+    "tmp": "0.2.5",
+    "minimatch": "3.1.4",
+    "lodash": "4.17.23"
   },
   "dependencies": {
     "@angular/animations": "^21.2.2",
