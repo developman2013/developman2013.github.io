@@ -10,6 +10,12 @@
     rel="noopener noreferrer"
     [attr.aria-label]="openProfileLabel"
   >
-    <img class="github-card-image" [src]="summaryUrl" alt="GitHub profile details for developman2013" />
+    <img
+      class="github-card-image"
+      [src]="summaryUrl"
+      alt="GitHub profile details for developman2013"
+      loading="lazy"
+      decoding="async"
+    />
   </a>
 </section>

@@ -9,7 +9,16 @@
 <main class="layout">
   <section class="hero" id="top">
     <div class="hero-intro">
-      <img class="hero-avatar" src="assets/me.jpg" alt="Mikhail Pirahouski" />
+      <img
+        class="hero-avatar"
+        src="assets/me.jpg"
+        alt="Mikhail Pirahouski"
+        width="220"
+        height="220"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
       <div class="hero-text">
         <p class="hero-kicker">{{ t.heroKicker }}</p>
         <h1>{{ name }}</h1>
@@ -22,51 +31,78 @@
     </div>
   </section>
 
-  <app-github-summary
-    [title]="t.githubTitle"
-    [lead]="t.githubLead"
-    [openProfileLabel]="t.githubOpenProfile"
-    [summaryUrl]="githubSummaryUrl"
-    [profileUrl]="githubProfileUrl"
-  />
+  @defer (on viewport) {
+    <app-github-summary
+      [title]="t.githubTitle"
+      [lead]="t.githubLead"
+      [openProfileLabel]="t.githubOpenProfile"
+      [summaryUrl]="githubSummaryUrl"
+      [profileUrl]="githubProfileUrl"
+    />
+  } @placeholder {
+    <section class="section">
+      <div class="section-head section-skeleton">
+        <span class="skeleton-line title"></span>
+        <span class="skeleton-line body"></span>
+      </div>
+    </section>
+  }
 
-  <section id="materials" class="section">
-    <div class="section-head">
-      <h2>{{ t.materialsTitle }}</h2>
-      <p>{{ t.materialsLead }}</p>
-    </div>
-    <div class="card-stack">
-      @for (item of t.materials; track item.tag) {
-        <app-card
-          [header]="item.header"
-          [description]="item.description"
-          [imgUrl]="item.imgUrl"
-          [extUrl]="item.extUrl ?? ''"
-          [tag]="item.tag"
-          [ctaLabel]="t.openSourceLabel"
-        />
-      }
-    </div>
-  </section>
+  @defer (on viewport) {
+    <section id="materials" class="section">
+      <div class="section-head">
+        <h2>{{ t.materialsTitle }}</h2>
+        <p>{{ t.materialsLead }}</p>
+      </div>
+      <div class="card-stack">
+        @for (item of t.materials; track item.tag) {
+          <app-card
+            [header]="item.header"
+            [description]="item.description"
+            [imgUrl]="item.imgUrl"
+            [extUrl]="item.extUrl ?? ''"
+            [tag]="item.tag"
+            [ctaLabel]="t.openSourceLabel"
+          />
+        }
+      </div>
+    </section>
+  } @placeholder {
+    <section id="materials" class="section">
+      <div class="section-head section-skeleton">
+        <span class="skeleton-line title"></span>
+        <span class="skeleton-line body"></span>
+      </div>
+    </section>
+  }
 
-  <section id="projects" class="section">
-    <div class="section-head">
-      <h2>{{ t.projectsTitle }}</h2>
-      <p>{{ t.projectsLead }}</p>
-    </div>
-    <div class="card-stack">
-      @for (item of t.projects; track item.tag) {
-        <app-card
-          [header]="item.header"
-          [description]="item.description"
-          [imgUrl]="item.imgUrl"
-          [extUrl]="item.extUrl ?? ''"
-          [tag]="item.tag"
-          [ctaLabel]="t.openSourceLabel"
-        />
-      }
-    </div>
-  </section>
+  @defer (on viewport) {
+    <section id="projects" class="section">
+      <div class="section-head">
+        <h2>{{ t.projectsTitle }}</h2>
+        <p>{{ t.projectsLead }}</p>
+      </div>
+      <div class="card-stack">
+        @for (item of t.projects; track item.tag) {
+          <app-card
+            [header]="item.header"
+            [description]="item.description"
+            [imgUrl]="item.imgUrl"
+            [extUrl]="item.extUrl ?? ''"
+            [tag]="item.tag"
+            [ctaLabel]="t.openSourceLabel"
+          />
+        }
+      </div>
+    </section>
+  } @placeholder {
+    <section id="projects" class="section">
+      <div class="section-head section-skeleton">
+        <span class="skeleton-line title"></span>
+        <span class="skeleton-line body"></span>
+      </div>
+    </section>
+  }
 
   <section class="section">
     <div class="section-head">
