@@ -1,10 +1,10 @@
 <header class="topbar">
-  <a class="brand" [attr.href]="anchorHref('top')">pirahouski</a>
+  <a class="brand" [attr.href]="anchorHref('top')" [class.active]="activeSection === 'top'">pirahouski</a>
 
   <nav class="links" aria-label="Main">
-    <a [attr.href]="anchorHref('materials')">{{ labels.materials }}</a>
-    <a [attr.href]="anchorHref('projects')">{{ labels.projects }}</a>
-    <a [attr.href]="anchorHref('contact')">{{ labels.contact }}</a>
+    <a [attr.href]="anchorHref('materials')" [class.active]="activeSection === 'materials'" [attr.aria-current]="activeSection === 'materials' ? 'page' : null">{{ labels.materials }}</a>
+    <a [attr.href]="anchorHref('projects')" [class.active]="activeSection === 'projects'" [attr.aria-current]="activeSection === 'projects' ? 'page' : null">{{ labels.projects }}</a>
+    <a [attr.href]="anchorHref('contact')" [class.active]="activeSection === 'contact'" [attr.aria-current]="activeSection === 'contact' ? 'page' : null">{{ labels.contact }}</a>
   </nav>
 
   <div class="controls">

@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, Inject } from '@angular/core';
+import { Component, HostListener, Inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { MenuComponent } from './menu/menu.component';
 import { CardComponent } from './card/card.component';
@@ -9,6 +9,7 @@ import { buildGithubSummaryUrl, SITE_CONFIG } from './site.config';
 
 type Lang = 'en' | 'ru';
 type Theme = 'light' | 'dark';
+type Section = 'top' | 'materials' | 'projects' | 'contact';
 
 type ShowcaseItem = {
   header: string;
@@ -62,6 +63,7 @@ export class AppComponent {
   readonly githubProfileUrl = SITE_CONFIG.github.profileUrl;
   currentLang: Lang = this.detectLangFromUrl();
   currentTheme: Theme = this.detectTheme();
+  activeSection: Section = 'top';
 
   private canonicalLinkEl: HTMLLinkElement | null = null;
   private readonly baseUrl = 'https://pirahouski.com';
@@ -294,6 +296,13 @@ export class AppComponent {
     this.writeLangToUrl(this.currentLang);
     this.applyTheme(this.currentTheme);
     this.updateSeo();
+    this.syncActiveSection();
+  }
+
+  @HostListener('window:scroll')
+  @HostListener('window:hashchange')
+  onViewportChanged() {
+    this.syncActiveSection();
   }
 
   private detectLangFromUrl(): Lang {
@@ -351,6 +360,32 @@ export class AppComponent {
     }
     document.documentElement.setAttribute('data-theme', theme);
     document.documentElement.setAttribute('data-bs-theme', theme);
+  }
+
+  private syncActiveSection() {
+    if (typeof window === 'undefined' || typeof document === 'undefined') {
+      return;
+    }
+
+    const hash = window.location.hash.replace('#', '');
+    if (this.isSection(hash)) {
+      this.activeSection = hash;
+      return;
+    }
+
+    const sections: Section[] = ['top', 'materials', 'projects', 'contact'];
+    const scrollPosition = window.scrollY + 140;
+
+    for (let i = sections.length - 1; i >= 0; i--) {
+      const id = sections[i];
+      const node = document.getElementById(id);
+      if (node && node.offsetTop <= scrollPosition) {
+        this.activeSection = id;
+        return;
+      }
+    }
+
+    this.activeSection = 'top';
   }
 
   private updateSeo() {
@@ -460,5 +495,9 @@ export class AppComponent {
 
   private isLang(value: string | null | undefined): value is Lang {
     return value === 'en' || value === 'ru';
+  }
+
+  private isSection(value: string | null | undefined): value is Section {
+    return value === 'top' || value === 'materials' || value === 'projects' || value === 'contact';
   }
 }

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 type Lang = 'en' | 'ru';
+type Section = 'top' | 'materials' | 'projects' | 'contact';
 
 type MenuLabels = {
   materials: string;
@@ -20,6 +21,7 @@ export class MenuComponent {
   @Input({ required: true }) labels!: MenuLabels;
   @Input() currentLang: Lang = 'en';
   @Input() darkThemeEnabled = false;
+  @Input() activeSection: Section = 'top';
   @Output() langChange = new EventEmitter<Lang>();
   @Output() themeToggle = new EventEmitter<void>();
 

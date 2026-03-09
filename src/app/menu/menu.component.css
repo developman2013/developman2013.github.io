@@ -25,6 +25,10 @@
   font-size: 0.95rem;
 }
 
+.brand.active {
+  color: var(--accent);
+}
+
 .links {
   display: flex;
   align-items: center;
@@ -41,6 +45,11 @@
 
 .links a:hover {
   opacity: 1;
+}
+
+.links a.active {
+  opacity: 1;
+  color: var(--accent);
 }
 
 .controls {
