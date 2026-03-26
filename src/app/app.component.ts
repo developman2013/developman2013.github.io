@@ -1,11 +1,14 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, HostListener, Inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
+import { initializeApp } from 'firebase/app';
+import { Analytics, getAnalytics, isSupported, logEvent } from 'firebase/analytics';
 import { MenuComponent } from './menu/menu.component';
 import { CardComponent } from './card/card.component';
 import { ContactComponent } from './contact/contact.component';
 import { GithubSummaryComponent } from './github-summary/github-summary.component';
 import { APP_CONTENT, Lang, ShowcaseItem } from './content.config';
+import { getFirebaseRuntimeConfig } from './firebase-config';
 import { buildGithubSummaryUrl, SITE_CONFIG } from './site.config';
 
 type Theme = 'light' | 'dark';
@@ -60,6 +63,7 @@ export class AppComponent {
 
   private canonicalLinkEl: HTMLLinkElement | null = null;
   private readonly baseUrl = 'https://pirahouski.com';
+  private firebaseAnalytics: Analytics | null = null;
 
   private readonly copy: Record<Lang, AppCopy> = {
     en: {
@@ -401,30 +405,39 @@ export class AppComponent {
   }
 
   private initAnalytics() {
-    if (typeof document === 'undefined') {
-      return;
-    }
-
-    const analytics = SITE_CONFIG.analytics;
-    if (!analytics.enabled || analytics.provider !== 'plausible') {
-      return;
-    }
-
-    if (!document.querySelector(`script[src="${analytics.scriptUrl}"]`)) {
-      const script = document.createElement('script');
-      script.defer = true;
-      script.dataset['domain'] = analytics.domain;
-      script.src = analytics.scriptUrl;
-      document.head.appendChild(script);
-    }
-  }
-
-  private trackEvent(name: string, props: AnalyticsProps) {
     if (typeof window === 'undefined') {
       return;
     }
 
-    const plausible = (window as Window & { plausible?: (eventName: string, eventData?: { props?: AnalyticsProps }) => void }).plausible;
-    plausible?.(name, { props });
+    const analytics = SITE_CONFIG.analytics;
+    if (!analytics.enabled || analytics.provider !== 'firebase') {
+      return;
+    }
+
+    void this.initFirebaseAnalytics();
+  }
+
+  private trackEvent(name: string, props: AnalyticsProps) {
+    if (typeof window === 'undefined' || !this.firebaseAnalytics) {
+      return;
+    }
+
+    logEvent(this.firebaseAnalytics, name, props);
+  }
+
+  private async initFirebaseAnalytics() {
+    const firebaseConfig = getFirebaseRuntimeConfig();
+    if (!firebaseConfig) {
+      console.warn('Firebase runtime config is missing. Analytics is disabled.');
+      return;
+    }
+
+    const analyticsSupported = await isSupported().catch(() => false);
+    if (!analyticsSupported) {
+      return;
+    }
+
+    const app = initializeApp(firebaseConfig);
+    this.firebaseAnalytics = getAnalytics(app);
   }
 }

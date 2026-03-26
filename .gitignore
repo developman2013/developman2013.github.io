@@ -39,3 +39,6 @@ testem.log
 Thumbs.db
 
 /docs/
+
+# Local runtime config
+src/assets/runtime-config.js
