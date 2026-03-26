@@ -50,6 +50,17 @@ Deployment is handled by GitHub Actions via:
 - `.github/workflows/deploy-pages.yml`
 
 On push to `master`, the workflow builds the app and publishes `dist/browser` to GitHub Pages.
+Before deploy, the workflow generates `dist/browser/assets/runtime-config.js` from GitHub Actions secrets, so Firebase values are not stored in the repository.
+
+Required repository secrets:
+
+- `FIREBASE_API_KEY`
+- `FIREBASE_AUTH_DOMAIN`
+- `FIREBASE_PROJECT_ID`
+- `FIREBASE_STORAGE_BUCKET`
+- `FIREBASE_MESSAGING_SENDER_ID`
+- `FIREBASE_APP_ID`
+- `FIREBASE_MEASUREMENT_ID`
 
 ## CI
 

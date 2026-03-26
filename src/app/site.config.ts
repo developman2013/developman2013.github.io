@@ -8,10 +8,8 @@ export const SITE_CONFIG = {
     }
   },
   analytics: {
-    provider: 'plausible',
+    provider: 'firebase',
     enabled: true,
-    domain: 'pirahouski.com',
-    scriptUrl: 'https://plausible.io/js/script.js'
   }
 } as const;
 
