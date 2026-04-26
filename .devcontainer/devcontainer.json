@@ -1,0 +1,35 @@
+{
+  "name": "pirahouski-app",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "remoteUser": "node",
+  "postCreateCommand": "npm ci",
+  "forwardPorts": [4200],
+  "portsAttributes": {
+    "4200": {
+      "label": "Angular dev server",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "containerEnv": {
+    "CHOKIDAR_USEPOLLING": "true"
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "files.watcherExclude": {
+          "**/.angular/**": true,
+          "**/dist/**": true
+        }
+      },
+      "extensions": [
+        "Angular.ng-template",
+        "ms-vscode.vscode-typescript-next",
+        "ms-playwright.playwright",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  }
+}
