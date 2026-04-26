@@ -14,6 +14,14 @@ describe('MenuComponent', () => {
     
     fixture = TestBed.createComponent(MenuComponent);
     component = fixture.componentInstance;
+    component.labels = {
+      experience: 'Experience',
+      materials: 'Materials',
+      projects: 'Projects',
+      contact: 'Contact',
+      language: 'Language switch',
+      theme: 'Toggle theme'
+    };
     fixture.detectChanges();
   });
 

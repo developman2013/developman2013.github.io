@@ -8,8 +8,19 @@ export type ShowcaseItem = {
   tag: string;
 };
 
+export type ExperienceItem = {
+  period: string;
+  role: string;
+  project: string;
+  summary: string;
+  highlights: string[];
+  stack: string[];
+  tag: string;
+};
+
 type LocalizedContent = {
   featuredProjectTag: string;
+  experience: ExperienceItem[];
   materials: ShowcaseItem[];
   projects: ShowcaseItem[];
 };
@@ -17,6 +28,97 @@ type LocalizedContent = {
 export const APP_CONTENT: Record<Lang, LocalizedContent> = {
   en: {
     featuredProjectTag: 'lord-of-time-project',
+    experience: [
+      {
+        period: '03/2023 - Present',
+        role: 'Software Engineer',
+        project: 'Customer data management portal',
+        summary: 'Leading delivery for a production web platform with architecture ownership, CI/CD design, and team coordination.',
+        highlights: [
+          'Selected the technology stack and shaped the solution architecture.',
+          'Delivered new platform features while supporting live customer workflows.',
+          'Built and maintained CI/CD flows for cloud-native environments.',
+          'Coordinated team execution across engineering tasks and delivery needs.'
+        ],
+        stack: ['.NET 6-10', 'SignalR', 'Azure', 'Docker', 'SQL Server', 'MongoDB', 'Azure DevOps'],
+        tag: 'customer-data-portal'
+      },
+      {
+        period: '08/2022 - 03/2023',
+        role: 'Software Engineer',
+        project: 'Research audience selection system',
+        summary: 'Expanded a research operations platform focused on target audience selection and stable data flow.',
+        highlights: [
+          'Analyzed requirements and implemented new end-to-end functionality.',
+          'Stabilized existing flows through targeted fixes and iterative support.'
+        ],
+        stack: ['.NET 6', 'SignalR', 'Cosmos DB', 'Service Bus', 'Docker', 'SQL Server', 'Redis'],
+        tag: 'research-management-system'
+      },
+      {
+        period: '12/2021 - 06/2022',
+        role: 'Software Engineer',
+        project: 'Data migration tool',
+        summary: 'Designed a migration-focused platform that combined desktop and API tooling for controlled data transfer.',
+        highlights: [
+          'Defined platform architecture for migration workflows.',
+          'Implemented new capabilities from requirement analysis to delivery.',
+          'Investigated production issues and handled deployment tasks.'
+        ],
+        stack: ['.NET Standard', '.NET 6', 'ASP.NET Web API', 'WPF', 'LiteDB', 'RestSharp', 'SignalR'],
+        tag: 'data-migration-tool'
+      },
+      {
+        period: '03/2021 - 12/2021',
+        role: 'Software Engineer',
+        project: 'Lifetime management mobile app',
+        summary: 'Built a multi-surface product for life management with backend services, web interfaces, and mobile delivery.',
+        highlights: [
+          'Implemented platform authentication and authorization.',
+          'Contributed to architecture decisions across the platform.',
+          'Delivered new functionality, fixed issues, and supported deployment.'
+        ],
+        stack: ['.NET Standard', 'ASP.NET API', 'Nginx', 'Entity Framework', 'PostgreSQL', 'Angular', 'Xamarin.Forms', 'Docker', 'GitHub Actions', 'IdentityServer', 'SignalR'],
+        tag: 'lifetime-management-app'
+      },
+      {
+        period: '12/2019 - 06/2021',
+        role: 'Software Engineer',
+        project: 'Delivery portal',
+        summary: 'Delivered customer-facing portal capabilities with strong attention to access control, maintenance, and release flow.',
+        highlights: [
+          'Built authentication and authorization layers for the platform.',
+          'Implemented and maintained new business functionality.',
+          'Supported bug fixing, platform maintenance, and deployment.'
+        ],
+        stack: ['ASP.NET API', 'Nginx', 'Entity Framework', 'PostgreSQL', 'Angular', 'Bootstrap', 'Docker', 'GitHub Actions', 'IdentityServer'],
+        tag: 'delivery-portal'
+      },
+      {
+        period: '04/2019 - 06/2019',
+        role: 'Software Engineer',
+        project: 'Telegram bot for QA teams',
+        summary: 'Created a lightweight automation bot that supported QA communication and routine operational tasks.',
+        highlights: [
+          'Implemented new features from requirement analysis to release.',
+          'Maintained the solution and handled deployment.'
+        ],
+        stack: ['.NET Framework', 'Bot Framework'],
+        tag: 'qa-telegram-bot'
+      },
+      {
+        period: '01/2019 - 04/2019',
+        role: 'Software Engineer',
+        project: 'Visual Studio plugin for QA teams',
+        summary: 'Built productivity tooling inside Visual Studio to support QA-focused workflows and reduce repetitive manual steps.',
+        highlights: [
+          'Implemented plugin functionality based on team requirements.',
+          'Maintained the extension and delivered releases.'
+        ],
+        stack: ['.NET Framework', 'WPF', 'VSIX', 'Visual Studio'],
+        tag: 'qa-vs-plugin'
+      }
+    ],
     materials: [
       {
         header: 'Automation through the eyes of a developer: GitHub Actions for a startup',
@@ -85,6 +187,97 @@ export const APP_CONTENT: Record<Lang, LocalizedContent> = {
   },
   ru: {
     featuredProjectTag: 'lord-of-time-project',
+    experience: [
+      {
+        period: '03/2023 - Настоящее время',
+        role: 'Software Engineer',
+        project: 'Портал управления клиентскими данными',
+        summary: 'Веду поставку production-платформы: отвечаю за архитектурные решения, CI/CD и координацию работы команды.',
+        highlights: [
+          'Подобрал технологический стек и сформировал архитектуру решения.',
+          'Развивал новые возможности платформы и поддерживал рабочие пользовательские сценарии.',
+          'Настроил и сопровождал CI/CD-процессы для cloud-native окружения.',
+          'Координировал выполнение инженерных задач и поставку изменений.'
+        ],
+        stack: ['.NET 6-10', 'SignalR', 'Azure', 'Docker', 'SQL Server', 'MongoDB', 'Azure DevOps'],
+        tag: 'customer-data-portal'
+      },
+      {
+        period: '08/2022 - 03/2023',
+        role: 'Software Engineer',
+        project: 'Система отбора целевой аудитории для исследований',
+        summary: 'Развивал платформу для исследовательских операций с фокусом на выборку целевой аудитории и надежный обмен данными.',
+        highlights: [
+          'Анализировал требования и внедрял новый функционал end-to-end.',
+          'Стабилизировал существующие сценарии за счет точечных исправлений и поддержки.'
+        ],
+        stack: ['.NET 6', 'SignalR', 'Cosmos DB', 'Service Bus', 'Docker', 'SQL Server', 'Redis'],
+        tag: 'research-management-system'
+      },
+      {
+        period: '12/2021 - 06/2022',
+        role: 'Software Engineer',
+        project: 'Инструмент миграции данных',
+        summary: 'Спроектировал платформу для миграции данных, объединив desktop-инструменты и API для контролируемого переноса.',
+        highlights: [
+          'Определил архитектуру платформы для миграционных сценариев.',
+          'Реализовал новый функционал от анализа требований до поставки.',
+          'Исследовал дефекты и занимался развертыванием решения.'
+        ],
+        stack: ['.NET Standard', '.NET 6', 'ASP.NET Web API', 'WPF', 'LiteDB', 'RestSharp', 'SignalR'],
+        tag: 'data-migration-tool'
+      },
+      {
+        period: '03/2021 - 12/2021',
+        role: 'Software Engineer',
+        project: 'Мобильное приложение для lifetime management',
+        summary: 'Разрабатывал продукт для управления жизненными направлениями с backend-сервисами, web-интерфейсами и мобильной поставкой.',
+        highlights: [
+          'Реализовал аутентификацию и авторизацию платформы.',
+          'Участвовал в архитектурных решениях по платформе.',
+          'Доставлял новый функционал, исправлял дефекты и сопровождал деплой.'
+        ],
+        stack: ['.NET Standard', 'ASP.NET API', 'Nginx', 'Entity Framework', 'PostgreSQL', 'Angular', 'Xamarin.Forms', 'Docker', 'GitHub Actions', 'IdentityServer', 'SignalR'],
+        tag: 'lifetime-management-app'
+      },
+      {
+        period: '12/2019 - 06/2021',
+        role: 'Software Engineer',
+        project: 'Delivery portal',
+        summary: 'Развивал клиентский портал с акцентом на управление доступом, поддержку платформы и стабильный релизный процесс.',
+        highlights: [
+          'Построил слой аутентификации и авторизации платформы.',
+          'Разрабатывал и сопровождал новый бизнес-функционал.',
+          'Занимался исправлением дефектов, поддержкой и деплоем.'
+        ],
+        stack: ['ASP.NET API', 'Nginx', 'Entity Framework', 'PostgreSQL', 'Angular', 'Bootstrap', 'Docker', 'GitHub Actions', 'IdentityServer'],
+        tag: 'delivery-portal'
+      },
+      {
+        period: '04/2019 - 06/2019',
+        role: 'Software Engineer',
+        project: 'Telegram-бот для QA-команд',
+        summary: 'Создал легковесный automation-бот для коммуникации QA-команд и рутинных операционных задач.',
+        highlights: [
+          'Реализовал новый функционал от анализа требований до релиза.',
+          'Поддерживал решение и выполнял деплой.'
+        ],
+        stack: ['.NET Framework', 'Bot Framework'],
+        tag: 'qa-telegram-bot'
+      },
+      {
+        period: '01/2019 - 04/2019',
+        role: 'Software Engineer',
+        project: 'Плагин для Visual Studio для QA-команд',
+        summary: 'Разработал productivity-инструмент внутри Visual Studio для QA-сценариев и уменьшения ручной рутины.',
+        highlights: [
+          'Реализовал функциональность плагина по требованиям команды.',
+          'Поддерживал расширение и выпускал обновления.'
+        ],
+        stack: ['.NET Framework', 'WPF', 'VSIX', 'Visual Studio'],
+        tag: 'qa-vs-plugin'
+      }
+    ],
     materials: [
       {
         header: 'Автоматизация глазами разработчика: GitHub Actions для стартапа',

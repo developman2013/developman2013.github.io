@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
+      imports: [AppComponent]
     }).compileComponents();
   });
 
@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'pirahouski-app' title`, () => {
+  it('should expose the portfolio owner name', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('pirahouski-app');
+    expect(app.name).toEqual('Mikhail Pirahouski');
   });
 
-  it('should render title', () => {
+  it('should render the experience section entry point', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, pirahouski-app');
+    expect(compiled.querySelector('#experience h2')?.textContent).toContain('Work Experience');
   });
 });

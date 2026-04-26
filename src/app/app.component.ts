@@ -7,18 +7,19 @@ import { MenuComponent } from './menu/menu.component';
 import { CardComponent } from './card/card.component';
 import { ContactComponent } from './contact/contact.component';
 import { GithubSummaryComponent } from './github-summary/github-summary.component';
-import { APP_CONTENT, Lang, ShowcaseItem } from './content.config';
+import { APP_CONTENT, ExperienceItem, Lang, ShowcaseItem } from './content.config';
 import { getFirebaseRuntimeConfig } from './firebase-config';
 import { buildGithubSummaryUrl, SITE_CONFIG } from './site.config';
 
 type Theme = 'light' | 'dark';
-type Section = 'top' | 'materials' | 'projects' | 'contact';
+type Section = 'top' | 'experience' | 'materials' | 'projects' | 'contact';
 type AnalyticsProps = Record<string, string | number | boolean>;
 
 type AppCopy = {
   seoTitle: string;
   seoDescription: string;
   menu: {
+    experience: string;
     materials: string;
     projects: string;
     contact: string;
@@ -28,8 +29,14 @@ type AppCopy = {
   heroKicker: string;
   heroLead: string;
   skipToContent: string;
+  viewExperience: string;
   readMaterials: string;
   exploreProjects: string;
+  experienceEyebrow: string;
+  experienceTitle: string;
+  experienceLead: string;
+  experienceHighlightsLabel: string;
+  experienceStackLabel: string;
   featuredTitle: string;
   featuredLead: string;
   materialsTitle: string;
@@ -70,6 +77,7 @@ export class AppComponent {
       seoTitle: 'Mikhail Pirahouski | Software Engineer Portfolio',
       seoDescription: 'Portfolio of Mikhail Pirahouski: engineering projects, technical publications, and collaboration contacts.',
       menu: {
+        experience: 'Experience',
         materials: 'Materials',
         projects: 'Projects',
         contact: 'Contact',
@@ -79,8 +87,14 @@ export class AppComponent {
       heroKicker: 'Software Engineer • Community Builder',
       heroLead: 'I build practical software, write technical stories, and turn delivery chaos into repeatable systems.',
       skipToContent: 'Skip to content',
+      viewExperience: 'View experience',
       readMaterials: 'Read materials',
       exploreProjects: 'Explore projects',
+      experienceEyebrow: 'Career timeline',
+      experienceTitle: 'Work Experience',
+      experienceLead: 'Seven delivery-heavy engagements across product engineering, cloud systems, developer tooling, and team coordination.',
+      experienceHighlightsLabel: 'Core contributions',
+      experienceStackLabel: 'Stack',
       featuredTitle: 'Featured project',
       featuredLead: 'Highlighted production-facing project from my portfolio.',
       materialsTitle: 'Materials',
@@ -102,6 +116,7 @@ export class AppComponent {
       seoTitle: 'Михаил Пирахоуски | Портфолио инженера-программиста',
       seoDescription: 'Портфолио Михаила Пирахоуски: инженерные проекты, технические публикации и контакты для сотрудничества.',
       menu: {
+        experience: 'Опыт',
         materials: 'Материалы',
         projects: 'Проекты',
         contact: 'Контакты',
@@ -111,8 +126,14 @@ export class AppComponent {
       heroKicker: 'Инженер-программист • Создатель сообществ',
       heroLead: 'Я создаю практичные продукты, пишу технические материалы и превращаю хаос в поставке в повторяемые процессы.',
       skipToContent: 'Перейти к содержанию',
+      viewExperience: 'Смотреть опыт',
       readMaterials: 'Читать материалы',
       exploreProjects: 'Смотреть проекты',
+      experienceEyebrow: 'Карьерная траектория',
+      experienceTitle: 'Опыт работы',
+      experienceLead: 'Семь насыщенных проектов на стыке продуктовой разработки, облачной инфраструктуры, инженерных инструментов и координации команд.',
+      experienceHighlightsLabel: 'Ключевой вклад',
+      experienceStackLabel: 'Стек',
       featuredTitle: 'Рекомендуемый проект',
       featuredLead: 'Выделенный продуктовый проект из моего портфолио.',
       materialsTitle: 'Материалы',
@@ -138,6 +159,10 @@ export class AppComponent {
 
   get materials(): ShowcaseItem[] {
     return APP_CONTENT[this.currentLang].materials;
+  }
+
+  get experience(): ExperienceItem[] {
+    return APP_CONTENT[this.currentLang].experience;
   }
 
   get projects(): ShowcaseItem[] {
@@ -186,7 +211,7 @@ export class AppComponent {
     this.trackEvent('contact_email_open', { lang: this.currentLang });
   }
 
-  anchorHref(fragment: 'materials' | 'projects'): string {
+  anchorHref(fragment: 'experience' | 'materials' | 'projects'): string {
     return `?lang=${this.currentLang}#${fragment}`;
   }
 
@@ -276,7 +301,7 @@ export class AppComponent {
       return;
     }
 
-    const sections: Section[] = ['top', 'materials', 'projects', 'contact'];
+    const sections: Section[] = ['top', 'experience', 'materials', 'projects', 'contact'];
     const scrollPosition = window.scrollY + 140;
 
     for (let i = sections.length - 1; i >= 0; i--) {
@@ -401,7 +426,7 @@ export class AppComponent {
   }
 
   private isSection(value: string | null | undefined): value is Section {
-    return value === 'top' || value === 'materials' || value === 'projects' || value === 'contact';
+    return value === 'top' || value === 'experience' || value === 'materials' || value === 'projects' || value === 'contact';
   }
 
   private initAnalytics() {
