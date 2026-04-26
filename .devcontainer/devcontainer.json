@@ -28,7 +28,8 @@
         "Angular.ng-template",
         "ms-vscode.vscode-typescript-next",
         "ms-playwright.playwright",
-        "ms-azuretools.vscode-docker"
+        "ms-azuretools.vscode-docker",
+        "openai.chatgpt"
       ]
     }
   }
