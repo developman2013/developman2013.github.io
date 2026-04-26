@@ -35,52 +35,7 @@
     </div>
   </section>
 
-  <section id="experience" class="section experience-section">
-    <div class="section-head experience-head">
-      <p class="section-kicker">{{ t.experienceEyebrow }}</p>
-      <h2>{{ t.experienceTitle }}</h2>
-      <p>{{ t.experienceLead }}</p>
-    </div>
-
-    <ol class="experience-timeline">
-      @for (item of experience; track item.tag) {
-        <li class="experience-card">
-          <div class="experience-rail">
-            <span class="experience-period">{{ item.period }}</span>
-          </div>
-
-          <div class="experience-body">
-            <div class="experience-topline">
-              <p class="experience-role">{{ item.role }}</p>
-              <h3>{{ item.project }}</h3>
-            </div>
-
-            <p class="experience-summary">{{ item.summary }}</p>
-
-            <div class="experience-meta">
-              <div>
-                <p class="experience-label">{{ t.experienceHighlightsLabel }}</p>
-                <ul class="experience-list">
-                  @for (highlight of item.highlights; track highlight) {
-                    <li>{{ highlight }}</li>
-                  }
-                </ul>
-              </div>
-
-              <div>
-                <p class="experience-label">{{ t.experienceStackLabel }}</p>
-                <div class="experience-stack">
-                  @for (tech of item.stack; track tech) {
-                    <span>{{ tech }}</span>
-                  }
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-      }
-    </ol>
-  </section>
+  <app-experience-section [currentLang]="currentLang" [copy]="experienceSectionCopy" />
 
   @defer (on viewport) {
     <app-github-summary

@@ -6,8 +6,9 @@ import { Analytics, getAnalytics, isSupported, logEvent } from 'firebase/analyti
 import { MenuComponent } from './menu/menu.component';
 import { CardComponent } from './card/card.component';
 import { ContactComponent } from './contact/contact.component';
+import { ExperienceSectionComponent, ExperienceSectionCopy } from './experience-section/experience-section.component';
 import { GithubSummaryComponent } from './github-summary/github-summary.component';
-import { APP_CONTENT, ExperienceItem, Lang, ShowcaseItem } from './content.config';
+import { APP_CONTENT, Lang, ShowcaseItem } from './content.config';
 import { getFirebaseRuntimeConfig } from './firebase-config';
 import { buildGithubSummaryUrl, SITE_CONFIG } from './site.config';
 
@@ -57,7 +58,7 @@ type AppCopy = {
 
 @Component({
   selector: 'app-root',
-  imports: [MenuComponent, CardComponent, ContactComponent, GithubSummaryComponent],
+  imports: [MenuComponent, CardComponent, ContactComponent, ExperienceSectionComponent, GithubSummaryComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -161,12 +162,18 @@ export class AppComponent {
     return APP_CONTENT[this.currentLang].materials;
   }
 
-  get experience(): ExperienceItem[] {
-    return APP_CONTENT[this.currentLang].experience;
-  }
-
   get projects(): ShowcaseItem[] {
     return APP_CONTENT[this.currentLang].projects;
+  }
+
+  get experienceSectionCopy(): ExperienceSectionCopy {
+    return {
+      eyebrow: this.t.experienceEyebrow,
+      title: this.t.experienceTitle,
+      lead: this.t.experienceLead,
+      highlightsLabel: this.t.experienceHighlightsLabel,
+      stackLabel: this.t.experienceStackLabel
+    };
   }
 
   get featuredProject(): ShowcaseItem {
