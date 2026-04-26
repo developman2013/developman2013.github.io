@@ -4,6 +4,10 @@
     "dockerfile": "Dockerfile"
   },
   "remoteUser": "node",
+  "mounts": [
+    "source=pirahouski-codex-home,target=/home/node/.codex,type=volume",
+    "source=pirahouski-vscode-server,target=/home/node/.vscode-server,type=volume"
+  ],
   "postCreateCommand": "npm ci",
   "forwardPorts": [4200],
   "portsAttributes": {
