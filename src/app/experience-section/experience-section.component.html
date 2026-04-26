@@ -8,7 +8,12 @@
   @if (experienceItems$ | async; as experienceItems) {
     <ol class="experience-timeline">
       @for (item of experienceItems; track item.tag) {
-        <li class="experience-card">
+        <li
+          #experienceCard
+          class="experience-card"
+          [class.is-active]="activeTag() === item.tag"
+          [attr.data-experience-tag]="item.tag"
+        >
           <div class="experience-rail">
             <span class="experience-period">{{ item.period }}</span>
           </div>
