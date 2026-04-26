@@ -267,6 +267,28 @@ button:focus-visible {
   letter-spacing: -0.02em;
 }
 
+.experience-card {
+  transform-origin: center top;
+}
+
+.experience-period {
+  position: sticky;
+  top: calc(var(--anchor-offset) + 0.85rem);
+  z-index: 1;
+  background: color-mix(in srgb, var(--panel) 92%, white 8%);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 14%, transparent);
+}
+
+@supports (animation-timeline: view()) {
+  .experience-card {
+    animation: experience-card-reveal linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 32%;
+  }
+}
+
 #top,
 #experience,
 #materials,
@@ -288,6 +310,10 @@ button:focus-visible {
   .hero-avatar {
     width: 88px;
     border-radius: 16px;
+  }
+
+  .experience-period {
+    position: static;
   }
 }
 
@@ -321,5 +347,17 @@ button:focus-visible {
 
   100% {
     background-position: -100% 0;
+  }
+}
+
+@keyframes experience-card-reveal {
+  from {
+    opacity: 0.35;
+    transform: translateY(18px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
