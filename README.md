@@ -35,6 +35,58 @@ App is available at:
 - `http://localhost:4200/`
 - `http://localhost:4200/?lang=ru`
 
+## VS Code Dev Container
+
+This repository includes a ready-to-use VS Code Dev Container setup.
+
+### What it does
+
+- Builds a dedicated development container from `.devcontainer/Dockerfile`
+- Installs the project dependencies with `npm ci` after container creation
+- Forwards port `4200` for Angular local development
+- Installs a small set of recommended VS Code extensions inside the container
+- Lets you run and debug the Angular app from VS Code while the toolchain lives in Docker
+
+### How to start
+
+Requirements:
+
+- Docker Desktop or compatible Docker runtime
+- VS Code
+- VS Code extension: `Dev Containers`
+
+Open the repository in VS Code and run:
+
+1. `Dev Containers: Reopen in Container`
+2. Wait until the container is built and `npm ci` finishes
+3. Start the app with `npm start`
+4. Open `http://localhost:4200`
+
+You can also use the debug configuration:
+
+1. Start `Angular: debug in Chrome`
+2. VS Code will run `npm start`
+3. Chrome will open the app with the debugger attached
+
+### Files
+
+- `.devcontainer/devcontainer.json` defines container behavior and forwarded ports
+- `.devcontainer/Dockerfile` defines the Node.js-based development image
+- `.vscode/tasks.json` defines reusable npm tasks
+- `.vscode/launch.json` defines the browser debugging profile
+
+### How it works
+
+VS Code itself stays on your host machine, but it attaches to the container as the development environment.
+That means:
+
+- terminal commands run inside Docker
+- Node.js and Angular CLI come from the container
+- extensions declared for the workspace are installed in the container context
+- your source code stays in the repository, mounted into the container
+
+This is usually the most practical form of "VS Code in Docker" for local development.
+
 ## Build
 
 ```bash
