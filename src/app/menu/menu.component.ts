@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 type Lang = 'en' | 'ru';
-type Section = 'top' | 'materials' | 'projects' | 'contact';
+type Section = 'top' | 'experience' | 'materials' | 'projects' | 'contact';
 
 type MenuLabels = {
+  experience: string;
   materials: string;
   projects: string;
   contact: string;
@@ -33,7 +34,7 @@ export class MenuComponent {
     this.themeToggle.emit();
   }
 
-  anchorHref(fragment: 'top' | 'materials' | 'projects' | 'contact'): string {
+  anchorHref(fragment: 'top' | 'experience' | 'materials' | 'projects' | 'contact'): string {
     return `?lang=${this.currentLang}#${fragment}`;
   }
 }

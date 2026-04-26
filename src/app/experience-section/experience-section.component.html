@@ -1,0 +1,58 @@
+<section id="experience" class="section experience-section">
+  <div class="section-head experience-head">
+    <p class="section-kicker">{{ copy().eyebrow }}</p>
+    <h2>{{ copy().title }}</h2>
+    <p>{{ copy().lead }}</p>
+  </div>
+
+  @if (experienceItems$ | async; as experienceItems) {
+    <ol class="experience-timeline">
+      @for (item of experienceItems; track item.tag) {
+        <li
+          #experienceCard
+          class="experience-card"
+          [class.is-active]="activeTag() === item.tag"
+          [attr.data-experience-tag]="item.tag"
+        >
+          <div class="experience-rail">
+            <span class="experience-period">{{ item.period }}</span>
+          </div>
+
+          <div class="experience-body">
+            <div class="experience-topline">
+              <p class="experience-role">{{ item.role }}</p>
+              <h3>{{ item.project }}</h3>
+            </div>
+
+            <p class="experience-summary">{{ item.summary }}</p>
+
+            <div class="experience-meta">
+              <div>
+                <p class="experience-label">{{ copy().highlightsLabel }}</p>
+                <ul class="experience-list">
+                  @for (highlight of item.highlights; track highlight) {
+                    <li>{{ highlight }}</li>
+                  }
+                </ul>
+              </div>
+
+              <div>
+                <p class="experience-label">{{ copy().stackLabel }}</p>
+                <div class="experience-stack">
+                  @for (tech of item.stack; track tech) {
+                    <span>{{ tech }}</span>
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      }
+    </ol>
+  } @else {
+    <div class="section-head section-skeleton">
+      <span class="skeleton-line title"></span>
+      <span class="skeleton-line body"></span>
+    </div>
+  }
+</section>
