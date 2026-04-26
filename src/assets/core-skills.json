@@ -1,0 +1,66 @@
+{
+  "en": [
+    {
+      "title": "Full-stack engineering",
+      "summary": "Product-facing development across backend services, web UI, and mobile-adjacent delivery.",
+      "items": ["C#", "TypeScript", "JavaScript", ".NET", "ASP.NET API", "Angular", "HTML", "CSS"]
+    },
+    {
+      "title": "Cloud and integration",
+      "summary": "Cloud services, messaging, storage, and observability for delivery-focused systems.",
+      "items": ["Microsoft Azure", "VK Cloud Solutions", "Google Cloud", "Service Bus", "Azure Functions", "Blob Storage", "Application Insights"]
+    },
+    {
+      "title": "Data layer",
+      "summary": "Relational and document stores used across portals, migration tools, and product platforms.",
+      "items": ["SQL Server", "PostgreSQL", "MongoDB", "Cosmos DB", "MySQL", "SQLite", "Redis"]
+    },
+    {
+      "title": "Delivery practice",
+      "summary": "Practical ownership of release flow, automation, and support for running products.",
+      "items": ["CI/CD", "Docker", "GitHub Actions", "Azure DevOps", "Deployment", "Maintenance", "Support"]
+    },
+    {
+      "title": "Engineering methods",
+      "summary": "Team practices that keep delivery predictable while requirements evolve.",
+      "items": ["Agile", "Scrum", "Kanban", "Pair Programming", "Requirements Analysis", "Bug Investigation"]
+    },
+    {
+      "title": "AI-assisted workflow",
+      "summary": "Daily engineering acceleration with modern coding assistants and agent tooling.",
+      "items": ["GitHub Copilot", "Codex", "VS Code", "Visual Studio"]
+    }
+  ],
+  "ru": [
+    {
+      "title": "Full-stack разработка",
+      "summary": "Продуктовая разработка на стыке backend-сервисов, web-интерфейсов и mobile-adjacent поставки.",
+      "items": ["C#", "TypeScript", "JavaScript", ".NET", "ASP.NET API", "Angular", "HTML", "CSS"]
+    },
+    {
+      "title": "Cloud и интеграции",
+      "summary": "Облачные сервисы, сообщения, хранение данных и наблюдаемость для delivery-focused систем.",
+      "items": ["Microsoft Azure", "VK Cloud Solutions", "Google Cloud", "Service Bus", "Azure Functions", "Blob Storage", "Application Insights"]
+    },
+    {
+      "title": "Data layer",
+      "summary": "Реляционные и документные хранилища для порталов, migration tooling и продуктовых платформ.",
+      "items": ["SQL Server", "PostgreSQL", "MongoDB", "Cosmos DB", "MySQL", "SQLite", "Redis"]
+    },
+    {
+      "title": "Delivery practice",
+      "summary": "Практическое владение релизным процессом, автоматизацией и поддержкой работающих продуктов.",
+      "items": ["CI/CD", "Docker", "GitHub Actions", "Azure DevOps", "Deployment", "Maintenance", "Support"]
+    },
+    {
+      "title": "Engineering methods",
+      "summary": "Командные практики, которые помогают сохранять предсказуемую поставку при меняющихся требованиях.",
+      "items": ["Agile", "Scrum", "Kanban", "Pair Programming", "Requirements Analysis", "Bug Investigation"]
+    },
+    {
+      "title": "AI-assisted workflow",
+      "summary": "Ускорение ежедневной разработки с помощью современных coding assistants и agent tooling.",
+      "items": ["GitHub Copilot", "Codex", "VS Code", "Visual Studio"]
+    }
+  ]
+}

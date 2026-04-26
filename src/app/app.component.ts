@@ -6,6 +6,7 @@ import { Analytics, getAnalytics, isSupported, logEvent } from 'firebase/analyti
 import { MenuComponent } from './menu/menu.component';
 import { CardComponent } from './card/card.component';
 import { ContactComponent } from './contact/contact.component';
+import { CoreSkillsCopy, CoreSkillsSectionComponent } from './core-skills-section/core-skills-section.component';
 import { ExperienceSectionComponent, ExperienceSectionCopy } from './experience-section/experience-section.component';
 import { GithubSummaryComponent } from './github-summary/github-summary.component';
 import { APP_CONTENT, Lang, ShowcaseItem } from './content.config';
@@ -33,6 +34,9 @@ type AppCopy = {
   viewExperience: string;
   readMaterials: string;
   exploreProjects: string;
+  coreSkillsEyebrow: string;
+  coreSkillsTitle: string;
+  coreSkillsLead: string;
   experienceEyebrow: string;
   experienceTitle: string;
   experienceLead: string;
@@ -58,7 +62,7 @@ type AppCopy = {
 
 @Component({
   selector: 'app-root',
-  imports: [MenuComponent, CardComponent, ContactComponent, ExperienceSectionComponent, GithubSummaryComponent],
+  imports: [MenuComponent, CardComponent, ContactComponent, CoreSkillsSectionComponent, ExperienceSectionComponent, GithubSummaryComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -85,12 +89,15 @@ export class AppComponent {
         language: 'Language switch',
         theme: 'Toggle dark theme'
       },
-      heroKicker: 'Software Engineer • Community Builder',
-      heroLead: 'I build practical software, write technical stories, and turn delivery chaos into repeatable systems.',
+      heroKicker: 'Full-stack Software Engineer • Community Builder',
+      heroLead: 'I build .NET and Angular products, write technical stories, and turn delivery chaos into repeatable systems.',
       skipToContent: 'Skip to content',
       viewExperience: 'View experience',
       readMaterials: 'Read materials',
       exploreProjects: 'Explore projects',
+      coreSkillsEyebrow: 'Core stack',
+      coreSkillsTitle: 'Skills Snapshot',
+      coreSkillsLead: 'A compact map of the technologies and practices I use to ship production-facing systems.',
       experienceEyebrow: 'Career timeline',
       experienceTitle: 'Work Experience',
       experienceLead: 'Seven delivery-heavy engagements across product engineering, cloud systems, developer tooling, and team coordination.',
@@ -124,12 +131,15 @@ export class AppComponent {
         language: 'Переключение языка',
         theme: 'Переключить темную тему'
       },
-      heroKicker: 'Инженер-программист • Создатель сообществ',
-      heroLead: 'Я создаю практичные продукты, пишу технические материалы и превращаю хаос в поставке в повторяемые процессы.',
+      heroKicker: 'Full-stack инженер • Создатель сообществ',
+      heroLead: 'Я создаю продукты на .NET и Angular, пишу технические материалы и превращаю хаос в поставке в повторяемые процессы.',
       skipToContent: 'Перейти к содержанию',
       viewExperience: 'Смотреть опыт',
       readMaterials: 'Читать материалы',
       exploreProjects: 'Смотреть проекты',
+      coreSkillsEyebrow: 'Core stack',
+      coreSkillsTitle: 'Срез навыков',
+      coreSkillsLead: 'Компактная карта технологий и практик, которые я использую для поставки production-facing систем.',
       experienceEyebrow: 'Карьерная траектория',
       experienceTitle: 'Опыт работы',
       experienceLead: 'Семь насыщенных проектов на стыке продуктовой разработки, облачной инфраструктуры, инженерных инструментов и координации команд.',
@@ -164,6 +174,14 @@ export class AppComponent {
 
   get projects(): ShowcaseItem[] {
     return APP_CONTENT[this.currentLang].projects;
+  }
+
+  get coreSkillsCopy(): CoreSkillsCopy {
+    return {
+      eyebrow: this.t.coreSkillsEyebrow,
+      title: this.t.coreSkillsTitle,
+      lead: this.t.coreSkillsLead
+    };
   }
 
   get experienceSectionCopy(): ExperienceSectionCopy {

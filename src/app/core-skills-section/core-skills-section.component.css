@@ -1,0 +1,69 @@
+.core-skills-section {
+  gap: 1rem;
+}
+
+.core-skills-head {
+  max-width: 72ch;
+}
+
+.core-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.core-skill-card {
+  display: grid;
+  align-content: start;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background:
+    linear-gradient(160deg, color-mix(in srgb, var(--accent) 9%, transparent), transparent 38%),
+    var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.core-skill-card h3 {
+  margin: 0;
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.12;
+  font-size: 1.12rem;
+}
+
+.core-skill-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.core-skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.core-skill-tags span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.8rem;
+  padding: 0.34rem 0.62rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--panel) 88%, white 12%);
+  color: var(--ink);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .core-skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .core-skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
