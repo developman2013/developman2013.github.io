@@ -1,28 +1,44 @@
 <header class="topbar">
   <a class="brand" [attr.href]="anchorHref('top')" [class.active]="activeSection === 'top'">pirahouski</a>
 
-  <nav class="links" aria-label="Main">
-    <a [attr.href]="anchorHref('experience')" [class.active]="activeSection === 'experience'" [attr.aria-current]="activeSection === 'experience' ? 'page' : null">{{ labels.experience }}</a>
-    <a [attr.href]="anchorHref('materials')" [class.active]="activeSection === 'materials'" [attr.aria-current]="activeSection === 'materials' ? 'page' : null">{{ labels.materials }}</a>
-    <a [attr.href]="anchorHref('projects')" [class.active]="activeSection === 'projects'" [attr.aria-current]="activeSection === 'projects' ? 'page' : null">{{ labels.projects }}</a>
-    <a [attr.href]="anchorHref('contact')" [class.active]="activeSection === 'contact'" [attr.aria-current]="activeSection === 'contact' ? 'page' : null">{{ labels.contact }}</a>
-  </nav>
+  <div class="header-actions">
+    <div class="controls">
+      <button
+        type="button"
+        class="theme-toggle"
+        [class.active]="darkThemeEnabled"
+        [attr.aria-label]="labels.theme"
+        [attr.aria-pressed]="darkThemeEnabled"
+        (click)="toggleTheme()"
+      >
+        ☾
+      </button>
 
-  <div class="controls">
+      <div class="lang-switch" role="group" [attr.aria-label]="labels.language">
+        <button type="button" [class.active]="currentLang === 'en'" (click)="setLang('en')">EN</button>
+        <button type="button" [class.active]="currentLang === 'ru'" (click)="setLang('ru')">RU</button>
+      </div>
+    </div>
+
     <button
       type="button"
-      class="theme-toggle"
-      [class.active]="darkThemeEnabled"
-      [attr.aria-label]="labels.theme"
-      [attr.aria-pressed]="darkThemeEnabled"
-      (click)="toggleTheme()"
+      class="menu-toggle"
+      [class.is-open]="mobileMenuOpen()"
+      [attr.aria-label]="mobileMenuLabel()"
+      aria-controls="main-navigation"
+      [attr.aria-expanded]="mobileMenuOpen()"
+      (click)="toggleMobileMenu()"
     >
-      ☾
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
-
-    <div class="lang-switch" role="group" [attr.aria-label]="labels.language">
-      <button type="button" [class.active]="currentLang === 'en'" (click)="setLang('en')">EN</button>
-      <button type="button" [class.active]="currentLang === 'ru'" (click)="setLang('ru')">RU</button>
-    </div>
   </div>
+
+  <nav class="links" id="main-navigation" aria-label="Main" [class.is-open]="mobileMenuOpen()">
+    <a [attr.href]="anchorHref('experience')" [class.active]="activeSection === 'experience'" [attr.aria-current]="activeSection === 'experience' ? 'page' : null" (click)="closeMobileMenu()">{{ labels.experience }}</a>
+    <a [attr.href]="anchorHref('materials')" [class.active]="activeSection === 'materials'" [attr.aria-current]="activeSection === 'materials' ? 'page' : null" (click)="closeMobileMenu()">{{ labels.materials }}</a>
+    <a [attr.href]="anchorHref('projects')" [class.active]="activeSection === 'projects'" [attr.aria-current]="activeSection === 'projects' ? 'page' : null" (click)="closeMobileMenu()">{{ labels.projects }}</a>
+    <a [attr.href]="anchorHref('contact')" [class.active]="activeSection === 'contact'" [attr.aria-current]="activeSection === 'contact' ? 'page' : null" (click)="closeMobileMenu()">{{ labels.contact }}</a>
+  </nav>
 </header>

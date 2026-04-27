@@ -94,6 +94,7 @@ This workspace defines 7 core agent roles based on **agent-team v1.0.0**:
 
 - **Frontend features**: Developer + Architect → code-development process → Tester
 - **UI/UX changes**: Consult styling standards, accessibility requirements
+- **UI verification rule**: After every UI change, launch Chromium, verify the site in both desktop and mobile viewports, and attach both screenshots in the user-facing agent response
 - **Component tests**: Required by Tester (test coverage KPI)
 - **Build validation**: DevOps enforces (`npm run build`, CI checks)
 

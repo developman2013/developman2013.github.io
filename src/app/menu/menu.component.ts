@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
 
 type Lang = 'en' | 'ru';
 type Section = 'top' | 'experience' | 'materials' | 'projects' | 'contact';
@@ -25,6 +25,7 @@ export class MenuComponent {
   @Input() activeSection: Section = 'top';
   @Output() langChange = new EventEmitter<Lang>();
   @Output() themeToggle = new EventEmitter<void>();
+  readonly mobileMenuOpen = signal(false);
 
   setLang(lang: Lang) {
     this.langChange.emit(lang);
@@ -34,7 +35,19 @@ export class MenuComponent {
     this.themeToggle.emit();
   }
 
+  toggleMobileMenu() {
+    this.mobileMenuOpen.update((isOpen) => !isOpen);
+  }
+
+  closeMobileMenu() {
+    this.mobileMenuOpen.set(false);
+  }
+
   anchorHref(fragment: 'top' | 'experience' | 'materials' | 'projects' | 'contact'): string {
     return `?lang=${this.currentLang}#${fragment}`;
+  }
+
+  mobileMenuLabel(): string {
+    return this.currentLang === 'ru' ? 'Открыть меню' : 'Open menu';
   }
 }
