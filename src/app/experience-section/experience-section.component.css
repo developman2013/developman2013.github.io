@@ -124,7 +124,56 @@
     grid-template-columns: 1fr;
   }
 
+  .experience-card {
+    gap: 0.85rem;
+    padding: 1rem 0.95rem 1.1rem;
+  }
+
+  .experience-rail {
+    margin-bottom: 0.1rem;
+  }
+
   .experience-rail::before {
     display: none;
+  }
+
+  .experience-period {
+    position: static;
+    top: auto;
+    max-width: 100%;
+    white-space: normal;
+    box-shadow: 0 8px 20px color-mix(in srgb, var(--accent) 12%, transparent);
+  }
+
+  .experience-summary {
+    font-size: 0.98rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .experience-card {
+    padding: 0.95rem 0.9rem 1rem;
+    border-radius: 22px;
+  }
+
+  .experience-body {
+    gap: 0.8rem;
+  }
+
+  .experience-topline h3 {
+    font-size: 1.9rem;
+  }
+
+  .experience-list {
+    gap: 0.65rem;
+  }
+
+  .experience-stack {
+    gap: 0.45rem;
+  }
+
+  .experience-stack span {
+    min-height: 2.2rem;
+    font-size: 0.82rem;
   }
 }

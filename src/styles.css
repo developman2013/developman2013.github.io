@@ -219,6 +219,7 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  padding-bottom: env(safe-area-inset-bottom, 0);
 }
 
 [data-theme='dark'] body {
@@ -328,7 +329,17 @@ button:focus-visible {
 
 @media (max-width: 760px) {
   :root {
-    --anchor-offset: 136px;
+    --anchor-offset: 156px;
+  }
+
+  .layout {
+    width: min(100%, calc(100% - 1rem));
+    margin: 0.85rem auto calc(5rem + env(safe-area-inset-bottom, 0));
+    gap: 1.5rem;
+  }
+
+  .section {
+    gap: 0.75rem;
   }
 
   .hero-intro {
@@ -348,6 +359,10 @@ button:focus-visible {
   .experience-card,
   .experience-card.is-active {
     opacity: 1;
+    transform: none;
+  }
+
+  .experience-card.is-active .experience-period {
     transform: none;
   }
 }
