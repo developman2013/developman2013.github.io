@@ -9,14 +9,12 @@ export type ShowcaseItem = {
 };
 
 type LocalizedContent = {
-  featuredProjectTag: string;
   materials: ShowcaseItem[];
   projects: ShowcaseItem[];
 };
 
 export const APP_CONTENT: Record<Lang, LocalizedContent> = {
   en: {
-    featuredProjectTag: 'lord-of-time-project',
     materials: [
       {
         header: 'Automation through the eyes of a developer: GitHub Actions for a startup',
@@ -84,7 +82,6 @@ export const APP_CONTENT: Record<Lang, LocalizedContent> = {
     ]
   },
   ru: {
-    featuredProjectTag: 'lord-of-time-project',
     materials: [
       {
         header: 'Автоматизация глазами разработчика: GitHub Actions для стартапа',
