@@ -42,8 +42,6 @@ type AppCopy = {
   experienceLead: string;
   experienceHighlightsLabel: string;
   experienceStackLabel: string;
-  featuredTitle: string;
-  featuredLead: string;
   materialsTitle: string;
   materialsLead: string;
   projectsTitle: string;
@@ -103,8 +101,6 @@ export class AppComponent {
       experienceLead: 'Seven delivery-heavy engagements across product engineering, cloud systems, developer tooling, and team coordination.',
       experienceHighlightsLabel: 'Core contributions',
       experienceStackLabel: 'Stack',
-      featuredTitle: 'Featured project',
-      featuredLead: 'Highlighted production-facing project from my portfolio.',
       materialsTitle: 'Materials',
       materialsLead: 'Selected publications on automation and engineering productivity.',
       projectsTitle: 'Code & Projects',
@@ -145,8 +141,6 @@ export class AppComponent {
       experienceLead: 'Семь насыщенных проектов на стыке продуктовой разработки, облачной инфраструктуры, инженерных инструментов и координации команд.',
       experienceHighlightsLabel: 'Ключевой вклад',
       experienceStackLabel: 'Стек',
-      featuredTitle: 'Рекомендуемый проект',
-      featuredLead: 'Выделенный продуктовый проект из моего портфолио.',
       materialsTitle: 'Материалы',
       materialsLead: 'Выбранные публикации про автоматизацию и инженерную эффективность.',
       projectsTitle: 'Код и проекты',
@@ -192,11 +186,6 @@ export class AppComponent {
       highlightsLabel: this.t.experienceHighlightsLabel,
       stackLabel: this.t.experienceStackLabel
     };
-  }
-
-  get featuredProject(): ShowcaseItem {
-    const content = APP_CONTENT[this.currentLang];
-    return content.projects.find((item) => item.tag === content.featuredProjectTag) ?? content.projects[0];
   }
 
   get githubSummaryUrl(): string {
