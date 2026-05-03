@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, HostListener, Inject } from '@angular/core';
+import { AfterViewInit, Component, HostListener, Inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { initializeApp } from 'firebase/app';
 import { Analytics, getAnalytics, isSupported, logEvent } from 'firebase/analytics';
@@ -64,7 +64,7 @@ type AppCopy = {
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   readonly name = 'Mikhail Pirahouski';
   readonly githubProfileUrl = SITE_CONFIG.github.profileUrl;
   currentLang: Lang = this.detectLangFromUrl();
@@ -241,6 +241,14 @@ export class AppComponent {
     this.initAnalytics();
   }
 
+  ngAfterViewInit() {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    window.requestAnimationFrame(() => this.syncActiveSection());
+  }
+
   @HostListener('window:scroll')
   @HostListener('window:hashchange')
   onViewportChanged() {
@@ -306,12 +314,6 @@ export class AppComponent {
 
   private syncActiveSection() {
     if (typeof window === 'undefined' || typeof document === 'undefined') {
-      return;
-    }
-
-    const hash = window.location.hash.replace('#', '');
-    if (this.isSection(hash)) {
-      this.activeSection = hash;
       return;
     }
 
@@ -437,10 +439,6 @@ export class AppComponent {
 
   private isLang(value: string | null | undefined): value is Lang {
     return value === 'en' || value === 'ru';
-  }
-
-  private isSection(value: string | null | undefined): value is Section {
-    return value === 'top' || value === 'experience' || value === 'materials' || value === 'projects' || value === 'contact';
   }
 
   private initAnalytics() {
