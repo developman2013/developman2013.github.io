@@ -48,18 +48,9 @@
 
 .hero-intro {
   display: grid;
-  grid-template-columns: minmax(84px, 110px) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   align-items: center;
   gap: 1rem;
-}
-
-.hero-avatar {
-  width: 100%;
-  aspect-ratio: 1;
-  border-radius: 20px;
-  object-fit: cover;
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow);
 }
 
 .hero-kicker {
@@ -345,11 +336,6 @@ button:focus-visible {
   .hero-intro {
     grid-template-columns: 1fr;
     justify-items: start;
-  }
-
-  .hero-avatar {
-    width: 88px;
-    border-radius: 16px;
   }
 
   .experience-period {

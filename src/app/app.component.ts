@@ -349,11 +349,11 @@ export class AppComponent implements AfterViewInit {
     this.meta.updateTag({ property: 'og:title', content: text.seoTitle });
     this.meta.updateTag({ property: 'og:description', content: text.seoDescription });
     this.meta.updateTag({ property: 'og:url', content: canonicalUrl });
-    this.meta.updateTag({ property: 'og:image', content: `${this.baseUrl}/assets/me.jpg` });
-    this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
+    this.meta.removeTag(`property='og:image'`);
+    this.meta.updateTag({ name: 'twitter:card', content: 'summary' });
     this.meta.updateTag({ name: 'twitter:title', content: text.seoTitle });
     this.meta.updateTag({ name: 'twitter:description', content: text.seoDescription });
-    this.meta.updateTag({ name: 'twitter:image', content: `${this.baseUrl}/assets/me.jpg` });
+    this.meta.removeTag(`name='twitter:image'`);
 
     this.ensureCanonical(canonicalUrl);
     this.ensureHreflangLinks();
@@ -407,7 +407,6 @@ export class AppComponent implements AfterViewInit {
           '@type': 'Person',
           name: this.name,
           url: `${this.baseUrl}/`,
-          image: `${this.baseUrl}/assets/me.jpg`,
           sameAs: [this.githubProfileUrl, 'https://t.me/mihailych007'],
           jobTitle: this.currentLang === 'ru' ? 'Инженер-программист' : 'Software Engineer'
         },
