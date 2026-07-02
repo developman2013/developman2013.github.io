@@ -35,6 +35,11 @@
           "configurations": {
             "production": {
               "deleteOutputPath": true,
+              "optimization": {
+                "styles": {
+                  "inlineCritical": false
+                }
+              },
               "budgets": [
                 {
                   "type": "initial",
