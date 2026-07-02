@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { AfterViewInit, Component, HostListener, Inject } from '@angular/core';
+import { AfterViewInit, Component, HostListener, Inject, ChangeDetectionStrategy } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { initializeApp } from 'firebase/app';
 import { Analytics, getAnalytics, isSupported, logEvent } from 'firebase/analytics';
@@ -62,6 +62,7 @@ type AppCopy = {
   selector: 'app-root',
   imports: [MenuComponent, CardComponent, ContactComponent, CoreSkillsSectionComponent, ExperienceSectionComponent, GithubSummaryComponent],
   templateUrl: './app.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './app.component.css'
 })
 export class AppComponent implements AfterViewInit {
