@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
+import { Component, EventEmitter, Input, Output, signal, ChangeDetectionStrategy } from '@angular/core';
 
 type Lang = 'en' | 'ru';
 type Section = 'top' | 'experience' | 'materials' | 'projects' | 'contact';
@@ -16,6 +16,7 @@ type MenuLabels = {
   selector: 'app-menu',
   imports: [],
   templateUrl: './menu.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './menu.component.css'
 })
 export class MenuComponent {
