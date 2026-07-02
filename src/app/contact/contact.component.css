@@ -5,15 +5,8 @@
   background: var(--panel);
   box-shadow: var(--shadow);
   display: grid;
-  grid-template-columns: 130px minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: 1rem;
-}
-
-.avatar {
-  width: 100%;
-  aspect-ratio: 1;
-  border-radius: 16px;
-  object-fit: cover;
 }
 
 .contact-body h3 {
@@ -51,9 +44,5 @@
 @media (max-width: 640px) {
   .contact-card {
     grid-template-columns: 1fr;
-  }
-
-  .avatar {
-    max-width: 180px;
   }
 }
