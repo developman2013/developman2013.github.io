@@ -54,7 +54,7 @@ export const APP_CONTENT: Record<Lang, LocalizedContent> = {
         header: 'Student hackathon “math_hack”',
         description: 'As part of MSP, our student team organized the first university hackathon.\nWe handled sponsorship, schedule, branding and promotion, and gathered more than fifty participants.',
         imgUrl: 'assets/05.png',
-        extUrl: 'http://www.gsu.by/ru/node/449',
+        extUrl: 'https://www.gsu.by/ru/node/449',
         tag: 'student-hackathon-event'
       }
     ],
@@ -121,7 +121,7 @@ export const APP_CONTENT: Record<Lang, LocalizedContent> = {
         header: 'Студенческий хакатон «math_hack»',
         description: 'В рамках MSP наша студенческая команда организовала первый университетский хакатон.\nМы собрали спонсоров, подготовили расписание и промо, и привлекли более 50 участников.',
         imgUrl: 'assets/05.png',
-        extUrl: 'http://www.gsu.by/ru/node/449',
+        extUrl: 'https://www.gsu.by/ru/node/449',
         tag: 'student-hackathon-event'
       }
     ],
